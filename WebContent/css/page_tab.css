@@ -1,0 +1,103 @@
+body {
+    background-image:url(../Product_Images/watermark_tree.GIF);   
+    margin: 0;
+    padding: 0; 
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+}
+
+
+.wid
+{
+    width:15px;
+}
+
+.wid1
+{
+    width:22px;
+}
+.left_div
+{
+    background:url(../images/left.gif) no-repeat;
+    background-color:green;
+    float:left;
+    width:1.4%;
+    height:20px; 
+}
+.right_div
+{
+    background:url(../images/right.gif) no-repeat;    
+    float:left;
+    width:2%;
+    height:20px; 
+}
+.head 
+{
+    background:url(../images/middle.gif) repeat;    
+    height:20px; 
+    width:auto;
+    float:left;
+    color:#FFFFFF;
+    font-weight:bold;
+    font-size: 12px;
+}
+
+
+.main_div
+{
+    width:100%;
+    border:1px  solid #28313A;
+    clear:left;
+    float:left;
+    background-color:#D7E6FD;
+}
+
+.title_box
+{
+    background: #0A5688;
+}
+
+.tree123
+{
+padding-left:10px;
+border:1px solid #28313A;
+padding-top:10px;
+ background-color:#D7E6FD;
+}
+
+.submit_class
+{
+    background:url(../images/middle.gif) repeat;
+
+padding-bottom:3px;
+height:22px;
+width:auto;
+border:none;
+color:#FFFFFF;
+font-weight:bold;
+}
+
+a {
+    color: #1B75A9;
+}
+
+a:hover, a:active {
+    text-decoration: none;
+    color: #1B75A9;
+}
+
+a:visited {
+    color: #1B75A9;
+}
+
+.data_tab_head{
+    background-image:url(../images/img02.jpg);
+    color:#FFFFFF;
+    font-weight:bold;
+    height:25px;
+}
+
+.data_tab_rows{
+    background-color:white;
+}

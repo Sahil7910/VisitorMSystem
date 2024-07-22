@@ -1,0 +1,1809 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="today_logs" pageWidth="1550" pageHeight="595" orientation="Landscape" columnWidth="1510" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Report_Title" class="java.lang.String"/>
+	<parameter name="imagePath" class="java.lang.String"/>
+	<parameter name="MonthName" class="java.lang.String"/>
+	<parameter name="YearName" class="java.lang.String"/>
+	<field name="first_name" class="java.lang.String"/>
+	<field name="last_name" class="java.lang.String"/>
+	<field name="day1" class="java.lang.String"/>
+	<field name="day2" class="java.lang.String"/>
+	<field name="day3" class="java.lang.String"/>
+	<field name="day4" class="java.lang.String"/>
+	<field name="day5" class="java.lang.String"/>
+	<field name="day6" class="java.lang.String"/>
+	<field name="day7" class="java.lang.String"/>
+	<field name="day8" class="java.lang.String"/>
+	<field name="day9" class="java.lang.String"/>
+	<field name="day10" class="java.lang.String"/>
+	<field name="day11" class="java.lang.String"/>
+	<field name="day12" class="java.lang.String"/>
+	<field name="day13" class="java.lang.String"/>
+	<field name="day14" class="java.lang.String"/>
+	<field name="day15" class="java.lang.String"/>
+	<field name="day16" class="java.lang.String"/>
+	<field name="day17" class="java.lang.String"/>
+	<field name="day18" class="java.lang.String"/>
+	<field name="day19" class="java.lang.String"/>
+	<field name="day20" class="java.lang.String"/>
+	<field name="day21" class="java.lang.String"/>
+	<field name="day22" class="java.lang.String"/>
+	<field name="day23" class="java.lang.String"/>
+	<field name="day24" class="java.lang.String"/>
+	<field name="day25" class="java.lang.String"/>
+	<field name="day26" class="java.lang.String"/>
+	<field name="day27" class="java.lang.String"/>
+	<field name="day28" class="java.lang.String"/>
+	<field name="day29" class="java.lang.String"/>
+	<field name="day30" class="java.lang.String"/>
+	<field name="day31" class="java.lang.String"/>
+	<field name="absentCount" class="java.lang.Integer"/>
+	<field name="presentCount" class="java.lang.Integer"/>
+	<field name="empNo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[empNo]]></fieldDescription>
+	</field>
+	<field name="d1In" class="java.lang.String"/>
+	<field name="d2In" class="java.lang.String"/>
+	<field name="d3In" class="java.lang.String"/>
+	<field name="d4In" class="java.lang.String"/>
+	<field name="d5In" class="java.lang.String"/>
+	<field name="d6In" class="java.lang.String"/>
+	<field name="d7In" class="java.lang.String"/>
+	<field name="d8In" class="java.lang.String"/>
+	<field name="d9In" class="java.lang.String"/>
+	<field name="d10In" class="java.lang.String"/>
+	<field name="d11In" class="java.lang.String"/>
+	<field name="d12In" class="java.lang.String"/>
+	<field name="d13In" class="java.lang.String"/>
+	<field name="d14In" class="java.lang.String"/>
+	<field name="d15In" class="java.lang.String"/>
+	<field name="d16In" class="java.lang.String"/>
+	<field name="d17In" class="java.lang.String"/>
+	<field name="d18In" class="java.lang.String"/>
+	<field name="d19In" class="java.lang.String"/>
+	<field name="d20In" class="java.lang.String"/>
+	<field name="d21In" class="java.lang.String"/>
+	<field name="d22In" class="java.lang.String"/>
+	<field name="d23In" class="java.lang.String"/>
+	<field name="d24In" class="java.lang.String"/>
+	<field name="d25In" class="java.lang.String"/>
+	<field name="d26In" class="java.lang.String"/>
+	<field name="d27In" class="java.lang.String"/>
+	<field name="d28In" class="java.lang.String"/>
+	<field name="d29In" class="java.lang.String"/>
+	<field name="d30In" class="java.lang.String"/>
+	<field name="d31In" class="java.lang.String"/>
+	<field name="d1Out" class="java.lang.String"/>
+	<field name="d2Out" class="java.lang.String"/>
+	<field name="d3Out" class="java.lang.String"/>
+	<field name="d4Out" class="java.lang.String"/>
+	<field name="d5Out" class="java.lang.String"/>
+	<field name="d6Out" class="java.lang.String"/>
+	<field name="d7Out" class="java.lang.String"/>
+	<field name="d8Out" class="java.lang.String"/>
+	<field name="d9Out" class="java.lang.String"/>
+	<field name="d10Out" class="java.lang.String"/>
+	<field name="d11Out" class="java.lang.String"/>
+	<field name="d12Out" class="java.lang.String"/>
+	<field name="d13Out" class="java.lang.String"/>
+	<field name="d14Out" class="java.lang.String"/>
+	<field name="d15Out" class="java.lang.String"/>
+	<field name="d16Out" class="java.lang.String"/>
+	<field name="d17Out" class="java.lang.String"/>
+	<field name="d18Out" class="java.lang.String"/>
+	<field name="d19Out" class="java.lang.String"/>
+	<field name="d20Out" class="java.lang.String"/>
+	<field name="d21Out" class="java.lang.String"/>
+	<field name="d22Out" class="java.lang.String"/>
+	<field name="d23Out" class="java.lang.String"/>
+	<field name="d24Out" class="java.lang.String"/>
+	<field name="d25Out" class="java.lang.String"/>
+	<field name="d26Out" class="java.lang.String"/>
+	<field name="d27Out" class="java.lang.String"/>
+	<field name="d28Out" class="java.lang.String"/>
+	<field name="d29Out" class="java.lang.String"/>
+	<field name="d30Out" class="java.lang.String"/>
+	<field name="d31Out" class="java.lang.String"/>
+	<field name="TD1" class="java.lang.String"/>
+	<field name="TD2" class="java.lang.String"/>
+	<field name="TD3" class="java.lang.String"/>
+	<field name="TD4" class="java.lang.String"/>
+	<field name="TD5" class="java.lang.String"/>
+	<field name="TD6" class="java.lang.String"/>
+	<field name="TD7" class="java.lang.String"/>
+	<field name="TD8" class="java.lang.String"/>
+	<field name="TD9" class="java.lang.String"/>
+	<field name="TD10" class="java.lang.String"/>
+	<field name="TD11" class="java.lang.String"/>
+	<field name="TD12" class="java.lang.String"/>
+	<field name="TD13" class="java.lang.String"/>
+	<field name="TD14" class="java.lang.String"/>
+	<field name="TD15" class="java.lang.String"/>
+	<field name="TD16" class="java.lang.String"/>
+	<field name="TD17" class="java.lang.String"/>
+	<field name="TD18" class="java.lang.String"/>
+	<field name="TD19" class="java.lang.String"/>
+	<field name="TD20" class="java.lang.String"/>
+	<field name="TD21" class="java.lang.String"/>
+	<field name="TD22" class="java.lang.String"/>
+	<field name="TD23" class="java.lang.String"/>
+	<field name="TD24" class="java.lang.String"/>
+	<field name="TD25" class="java.lang.String"/>
+	<field name="TD26" class="java.lang.String"/>
+	<field name="TD27" class="java.lang.String"/>
+	<field name="TD28" class="java.lang.String"/>
+	<field name="TD29" class="java.lang.String"/>
+	<field name="TD30" class="java.lang.String"/>
+	<field name="TD31" class="java.lang.String"/>
+	<sortField name="empNo"/>
+	<variable name="empNo" class="java.lang.Integer" incrementType="Group" incrementGroup="EmpGroup" calculation="Count">
+		<variableExpression><![CDATA[Boolean.TRUE]]></variableExpression>
+	</variable>
+	<group name="EmpGroup" minHeightToStartNewPage="60">
+		<groupExpression><![CDATA[$F{empNo}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField evaluationTime="Group" evaluationGroup="EmpGroup" bookmarkLevel="1">
+					<reportElement mode="Opaque" x="0" y="5" width="1510" height="15" backcolor="#C0C0C0"/>
+					<box leftPadding="10">
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement/>
+					<textFieldExpression><![CDATA["  " + String.valueOf($V{empNo}) + " ."  + String.valueOf($F{first_name}+$F{last_name})]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="12"/>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="80" splitType="Stretch">
+		<image>
+				<reportElement  x="27" y="0" width="100" height="35"/>
+				<imageExpression><![CDATA[$P{imagePath}+"/logo.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="647" y="24" width="140" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Report_Title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="62" y="30" width="142" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MonthName}+" "+$P{YearName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1414" y="0" width="96" height="20"/>
+				<textElement/>
+				<text><![CDATA[P-Present]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1414" y="20" width="96" height="20"/>
+				<textElement/>
+				<text><![CDATA[A-Absent]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1414" y="40" width="96" height="20"/>
+				<textElement/>
+				<text><![CDATA[N-Not Valid]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1414" y="60" width="96" height="20"/>
+				<textElement/>
+				<text><![CDATA[W-Weekly Off]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="67" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Month-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="692" y="58" width="45" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Days]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<line>
+            	<reportElement x="0" y="0" width="1510"
+            	height="1"/>
+        	</line>
+			<line>
+            	<reportElement x="0" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="3" y="1" width="55" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMPNO]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="118" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="121" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="163" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="166" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="208" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="211" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[4]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="253" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="256" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[5]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="298" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="301" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[6]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="388" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="391" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[8]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="658" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="661" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[14]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="613" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="616" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[13]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="523" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="526" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[11]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="882" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="885" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[19]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="748" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="751" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[16]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="1377" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="1380" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[30]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="1017" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="1020" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[22]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="1487" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="1490" y="1" width="20" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="1062" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="1065" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[23]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="568" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="571" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[12]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="478" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="481" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[10]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="1332" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="1335" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[29]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="433" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="436" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[9]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="792" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="795" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[17]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="1287" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="1290" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[28]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="703" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="706" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[15]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="837" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="840" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[18]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="1197" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="1200" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[26]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="1107" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="1110" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[24]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="1422" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="1425" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[31]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="927" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="930" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[20]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="972" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="975" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[21]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="73" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="76" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="343" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="346" y="1" width="45" height="22"/>
+				<textElement/>
+				<text><![CDATA[7]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="1152" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="1155" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[25]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="1242" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="1245" y="1" width="45" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[27]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="1467" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="1470" y="1" width="20" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[P]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="1510" y="0" width="1"
+            	height="30"/>
+        	</line>
+        	<line>
+            	<reportElement x="0" y="29" width="1510"
+            	height="1"/>
+        	</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="98" splitType="Stretch">
+			<line>
+            	<reportElement x="118" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="121" y="0" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day2}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="163" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="166" y="0" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day3}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="208" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="211" y="0" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day4}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="253" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="256" y="0" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day5}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="298" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="301" y="0" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day6}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="343" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="346" y="0" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day7}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="433" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="436" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day9}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="522" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="525" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day11}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="567" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="570" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day12}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="747" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="750" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day16}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="882" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="885" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day19}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1017" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1020" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day22}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1107" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1110" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day24}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1152" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1155" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day25}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1197" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1200" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day26}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1242" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1245" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day27}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1332" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1335" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day29}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1062" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1065" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day23}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1287" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1290" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day28}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="73" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="76" y="0" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day1}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="388" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="391" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day8}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="477" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="480" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day10}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="612" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="615" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day13}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="657" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="660" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day14}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="702" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="705" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day15}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="792" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="795" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day17}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="837" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="840" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day18}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="927" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="930" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day20}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="972" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="975" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day21}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1377" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1380" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day30}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1422" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1425" y="1" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{day31}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1467" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1470" y="1" width="20" height="22"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{presentCount}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1487" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1490" y="0" width="20" height="22"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{absentCount}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="0" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<staticText>
+				<reportElement x="3" y="1" width="55" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="118" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="121" y="22" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d2In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="163" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="166" y="22" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d3In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="208" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="211" y="22" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d4In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="253" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="256" y="22" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d5In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="298" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="301" y="22" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d6In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="343" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="346" y="22" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d7In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="433" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="436" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d9In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="522" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="525" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d11In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="567" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="570" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d12In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="747" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="750" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d16In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="882" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="885" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d19In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1017" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1020" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d22In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1107" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1110" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d24In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1152" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1155" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d25In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1197" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1200" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d26In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1242" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1245" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d27In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1332" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1335" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d29In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1062" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1065" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d23In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1287" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1290" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d28In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="73" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="76" y="22" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d1In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="388" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="391" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d8In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="477" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="480" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d10In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="612" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="615" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d13In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="657" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="660" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d14In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="702" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="705" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d15In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="792" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="795" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d17In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="837" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="840" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d18In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="927" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="930" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d20In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="972" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="975" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d21In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1377" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1380" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d30In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1422" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1425" y="23" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d31In}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="0" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<staticText>
+				<reportElement x="3" y="23" width="55" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[InTime]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="118" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="121" y="44" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d2Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="163" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="166" y="44" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d3Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="208" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="211" y="44" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d4Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="253" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="256" y="44" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d5Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="298" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="301" y="44" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d6Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="343" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="346" y="44" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d7Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="432" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="435" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d9Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="522" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="525" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d11Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="567" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="570" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d12Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="747" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="750" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d16Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="882" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="885" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d19Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1017" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1020" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d22Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1107" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1110" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d24Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1152" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1155" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d25Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1197" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1200" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d26Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1242" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1245" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d27Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1332" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1335" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d29Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1062" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1065" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d23Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1287" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1290" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d28Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="73" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="76" y="44" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d1Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="387" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="390" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d8Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="477" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="480" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d10Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="612" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="615" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d13Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="657" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="660" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d14Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="702" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="705" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d15Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="792" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="795" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d17Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="837" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="840" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d18Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="927" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="930" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d20Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="972" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="975" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d21Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1377" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1380" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d30Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1422" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1425" y="45" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{d31Out}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="0" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<staticText>
+				<reportElement x="4" y="45" width="55" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[OutTime]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="118" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="121" y="66" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD2}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="163" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="166" y="66" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD3}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="208" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="211" y="66" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD4}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="253" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="256" y="66" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD5}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="298" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="301" y="66" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD6}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="343" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="346" y="66" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD7}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="432" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="435" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD9}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="522" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="525" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD11}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="567" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="570" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD12}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="747" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="750" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD16}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="882" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="885" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD19}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1017" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1020" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD22}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1107" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1110" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD24}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1152" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1155" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD25}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1197" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1200" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD26}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1242" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1245" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD27}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1332" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1335" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD29}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1062" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1065" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD23}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1287" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1290" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD28}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="73" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="76" y="66" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD1}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="388" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="391" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD8}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="477" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="480" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD10}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="612" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="615" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD13}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="657" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="660" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD14}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="702" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="705" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD15}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="792" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="795" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD17}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="837" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="840" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD18}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="927" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="930" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD20}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="972" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="975" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD21}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1377" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1380" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD30}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="1422" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1425" y="67" width="45" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TD30}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="0" y="0" width="1"
+            	height="98"/>
+        	</line>
+			<staticText>
+				<reportElement x="0" y="67" width="55" height="22" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Duration]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="1510" y="0" width="1"
+            	height="98"/>
+        	</line>
+        	<line>
+            	<reportElement x="0" y="17" width="1510"
+            	height="1"/>
+        	</line>
+        	<line>
+            	<reportElement x="0" y="37" width="1510"
+            	height="1"/>
+        	</line>
+        	<line>
+            	<reportElement x="0" y="61" width="1510"
+            	height="1"/>
+        	</line>
+        	<line>
+            	<reportElement x="0" y="97" width="1510"
+            	height="1"/>
+        	</line>
+		</band>
+	</detail>
+</jasperReport>

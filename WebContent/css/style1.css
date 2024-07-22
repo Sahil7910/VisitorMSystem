@@ -1,0 +1,131 @@
+.txt_black {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+}
+
+.repTableLayout{
+	border:0px;
+	border-collapse:collapse;
+	border-color:#111111;
+	width:100%;
+}
+.txt_white{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #ffffff;
+}
+
+.txt_highlight {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration:none;
+}
+
+.txt_highlight:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration:underline;
+}
+.txt_bold_black {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	font-weight:bold;
+}
+
+
+.txt_tab_head {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #ffffff;
+	text-decoration:none;
+}
+.txt_bold_white {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #ffffff;
+	font-weight:bold;
+}
+
+.txt_tab_head:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #ffffff;
+	text-decoration:underline;
+}
+.txt_black_link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration:none;
+}
+
+.txt_black_link:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration:underline;
+}
+.frontValid11 {
+	border-color:#FFFFFF;
+	border-width:1px;
+	font-size:12px;
+	font-family:Arial, Helvetica, sans-serif;
+	text-align:center;
+	border-style:solid;
+	color:#006600;
+	background-color:#F3F3F3;
+	height:auto;
+}
+.frontTInvalid11{
+	border-color:#FFFFFF;
+	border-width:1px;
+	font-size:12px;
+	font-family:Arial, Helvetica, sans-serif;
+	text-align:center;
+	background-color:#D3D2D3;
+	color:#FF0000;
+	border-style:solid;
+	height:auto;
+}
+.frontInvalid11 {
+	border-color:#FFFFFF;
+	border-width:1px;
+	font-size:12px;
+	background-color:#D3D2D3;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#FF0000;
+	text-align:center;
+	border-style:solid;
+	height:auto;
+}
+.mouseoverCSS{
+ /* background-color:#FFFFFF;*/
+  cursor:pointer;
+}
+.mouseoutCSS{
+ cursor:default;
+}
+
+.lableLook{
+font-family:"Bookman Old Style";
+font-style:normal;
+font-size:12px;
+color:black;
+text-align:center;
+border: 0px solid #C0C0C0; 
+padding: 0; 
+background-color: #EFEFEF; 
+
+/*background-color: #006699; */
+}
+
+.input_box
+{
+border:#999999 1px solid;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+}

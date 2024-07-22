@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" 
+	name="EmployeeWiseReport" pageWidth="800" pageHeight="842" columnWidth="760"  rightMargin="20" topMargin="30" bottomMargin="30">
+	
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1"/>
+	<parameter name="Report_Title" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="imagePath" class="java.lang.String"/>
+	<field name="departmentName" class="java.lang.String"/>
+	<field name="P" class="java.lang.Integer"/>
+	<field name="A" class="java.lang.Integer"/>
+	<field name="noLeaves" class="java.lang.Integer"/>
+	<field name="LateComing" class="java.lang.Integer"/>
+	<field name="EarlyGoing" class="java.lang.Integer"/>
+	<field name="TotalEmployees" class="java.lang.Integer"/>
+	<title>
+		<band height="49" splitType="Stretch">
+			<image>
+				<reportElement  x="27" y="0" width="100" height="35"/>
+				<imageExpression><![CDATA[$P{imagePath}+"/logo.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="222" y="18" width="270" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{Report_Title}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="2" width="111" height="23" forecolor="#000000"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Attendance Date:-]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="135" y="2" width="87" height="23"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="100" splitType="Stretch">
+			<line>
+            	<reportElement x="0" y="0" width="600"
+            	height="1"/>
+        	</line>
+			<line>
+            	<reportElement x="0" y="0" width="1"
+            	height="100"/>
+         	</line>
+			<textField>
+				<reportElement x="13" y="70" width="111" height="30"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{departmentName}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="120" y="0" width="1"
+            	height="100"/>
+         	</line>
+         	
+			<textField>
+				<reportElement x="121" y="65" width="54" height="30"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{P}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="0" y="0" width="1"
+            	height="100"/>
+         	</line>
+			<staticText>
+				<reportElement x="10" y="18" width="111" height="23" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Department Name]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="0" y="0" width="1"
+            	height="100"/>
+         	</line>
+         	
+         	
+			<staticText>
+				<reportElement x="120" y="18" width="54" height="23" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[P]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="165" y="0" width="1"
+            	height="100"/>
+         	</line>
+         	
+         	
+			<staticText>
+				<reportElement x="170" y="18" width="54" height="23" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="219" y="0" width="1"
+            	height="100"/>
+         	</line>
+         	
+         	
+			<staticText>
+				<reportElement x="220" y="18" width="76" height="23" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[On Leave]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="295" y="0" width="1"
+            	height="100"/>
+         	</line>
+         	
+         	
+			<staticText>
+				<reportElement x="298" y="18" width="90" height="23" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Late Coming]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="385" y="0" width="1"
+            	height="100"/>
+         	</line>
+         	
+         	
+			<staticText>
+				<reportElement x="389" y="18" width="90" height="23" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Early Going]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="475" y="0" width="1"
+            	height="100"/>
+         	</line>
+         	
+         	
+			<staticText>
+				<reportElement x="485" y="18" width="111" height="23" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Employees]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="600" y="0" width="1"
+            	height="100"/>
+         	</line>
+         	<line>
+            	<reportElement x="0" y="45" width="600"
+            	height="1"/>
+         	</line>
+         	<line>
+            	<reportElement x="0" y="99" width="600"
+            	height="1"/>
+         	</line>
+			<textField>
+				<reportElement x="170" y="65" width="54" height="30"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{A}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="224" y="65" width="76" height="30"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{noLeaves}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="65" width="90" height="30"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{LateComing}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="65" width="90" height="30"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{EarlyGoing}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="485" y="65" width="111" height="30"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{TotalEmployees}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

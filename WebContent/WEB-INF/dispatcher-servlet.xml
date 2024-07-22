@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context" 
+xmlns:mvc="http://www.springframework.org/schema/mvc" xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+<!--views.properties -->
+<bean id="viewResolver"	class="org.springframework.web.servlet.view.ResourceBundleViewResolver"  p:basename="views" />
+
+<!-- messages.properties -->
+		<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="messages" />
+		
+	
+<!-- tiles-defs.xml -->
+		<bean id="tilesConfigurer" 
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"
+		p:definitions="/WEB-INF/tiles-defs.xml" />
+		
+		
+	
+	
+<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations">
+        <value>classpath:com/foo/db.properties</value>
+    </property>
+    <property name="propertiesPersister">
+        <bean class="com.mycompany.MyPropertyPersister" />
+    </property>        
+</bean> -->
+
+	<!-- <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/distna" />
+		<property name="username" value="root" />
+		<property name="password" value="admin" />
+	</bean> -->
+	
+	
+<context:property-placeholder location="classpath:database.properties" ignore-unresolvable="true"/>
+	
+<!-- <bean id="myDataSource" class="com.distna.utility.MyCustomBasicDataSource" destroy-method="close">
+    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+    <property name="url" value="jdbc:mysql://127.0.0.1:3306/distna"/>
+    <property name="username" value="root"/>
+    <property name="password" value="admin"/>
+</bean> -->
+
+
+<!-- <mvc:interceptors>
+    <bean id="SessionHandler" class="com.distna.web.sessionhandler.SessionHandler" >
+    	<property name="canteenItemsDAO" ref="CanteenItemsDAO"></property>
+    	<property name="canteenTimingsDAO" ref="CanteenTimingsDAO"></property>
+    </bean>
+</mvc:interceptors> -->
+    
+	
+	
+	 <!--scan pojos from following packages -->
+	<!-- <bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="myDataSource" />
+		<property name="packagesToScan">
+			<list>
+				<value>com.distna.domain.*</value>
+			</list>
+		</property>
+		<property name="hibernate.hbm2ddl.auto"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+			</props>
+		</property>
+		
+	</bean>
+	 -->
+	 
+	 <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/distna" />
+		<property name="username" value="root" />
+		<property name="password" value="admin" />
+	</bean> 
+	 
+	 	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="myDataSource" />
+		<property name="packagesToScan">
+			<list>
+				<value>com.distna.domain.*</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+			</props>
+		</property>
+	</bean> 
+	
+	
+	 
+	
+	<!-- for uploading multipart files -->
+	<bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">    
+        <property name="maxUploadSize" value="10000000" />
+    </bean> 
+    
+    
+     <!-- controller declaration -->
+    <mvc:annotation-driven />
+    <context:component-scan base-package="com.distna.web.admin"/>
+    <context:component-scan base-package="com.distna.web.login"/>
+    
+    <!-- Validator Declaration -->
+    <bean id="employeeExperiencesValidator" class="com.distna.service.employee.EmployeeExperiencesValidator"/>
+    
+     <bean id="employeeSkillsValidator" class="com.distna.service.employee.EmployeeSkillsValidator"/>
+     
+     <bean id="employeeBankValidator" class="com.distna.service.employee.EmployeeBankValidator"/>
+     
+      <bean id="employeePersonalValidator" class="com.distna.service.employee.EmployeePersonalValidator"/>
+      
+       <bean id="employeeEducationValidator" class="com.distna.service.employee.EmployeeEducationValidator"/>
+     
+      <bean id="jobRolesValidator" class="com.distna.service.company.JobRolesValidator"/>
+     
+     <bean id="companyPoliciesValidator" class="com.distna.service.company.CompanyPoliciesValidator"/>
+
+	<bean id="locationValidator" class="com.distna.service.company.LocationValidator"/>	
+     
+     <bean id="departmentValidator" class="com.distna.service.company.DepartmentValidator"/>	
+     
+     <bean id="designationValidator" class="com.distna.service.company.DesignationValidator"/>	
+     
+     <bean id="jobPositionValidator" class="com.distna.service.company.JobPositionValidator"/>
+     
+     <bean id="divisionValidator" class="com.distna.service.company.DivisionValidator"/>
+     
+     
+      <bean id="shiftMasterValidator" class="com.distna.service.calendar.ShiftMasterValidator"/>
+      
+      <bean id="shiftDefinitionValidator" class="com.distna.service.calendar.ShiftDefinitionValidator"/>
+      
+    <bean id="shiftAllocationValidator" class="com.distna.service.calendar.ShiftAllocationValidator"/>
+    <bean id="LeavesValidator" class=" com.distna.service.leaves.LeavesValidator"/>
+	<bean id="OfficialTourValidator" class=" com.distna.service.leaves.OfficialTourValidator"/>
+	<bean id="LeaveTypeValidator" class=" com.distna.service.leaves.LeaveTypeValidator"/>
+	<bean id="LeaveAllocationValidator" class=" com.distna.service.leaves.LeaveAllocationValidator"/>
+	<bean id="LeaveApplicationValidator" class=" com.distna.service.leaves.LeaveApplicationValidator"/>
+	<bean id="EmployeeAssesmentValidator" class="com.distna.service.employee.EmployeeAssesmentValidator"/>
+	<bean id="EmployeeProjectsValidator" class="com.distna.service.employee.EmployeeProjectsValidator"/>
+	<bean id="EmployeeValidator" class="com.distna.service.employee.EmployeeValidator"/>
+	<bean id="EmployeePrivilegeValidator" class="com.distna.service.employee.EmployeePrivilegeValidator"/>
+	
+	
+	
+	<bean id="employeeMessagesValidator" class="com.distna.service.employee.EmployeeMessagesValidator"/>
+	
+	<bean id="breaksValidator" class="com.distna.service.leaves.BreaksValidator"/>
+	
+	<bean id="priorityValidator" class="com.distna.service.company.PriorityValidator"/>
+	 <bean id="canteenItemsValidator" class="com.distna.service.company.CanteenItemsValidator"/>
+	 
+	 <bean id="canteenTimingsValidator" class="com.distna.service.company.CanteenTimingsValidator"/>
+	
+	<bean id="visitorValidator" class="com.distna.service.visitor.VisitorValidator"/>
+	
+	<bean id="visitorLogsValidator" class="com.distna.service.visitor.VisitorLogsValidator"/>
+	
+	<bean id="vehicleDetailsValidator" class="com.distna.service.visitor.VehicleDetailsValidator"/>
+	
+	<bean id="vehicleLogsValidator" class="com.distna.service.visitor.VehicleLogsValidator"/>
+	
+	<!-- <bean id="leavesPerLeaveType" class="com.distna.service.charts.LeavesPerLeaveType"/> -->
+		
+     
+      
+    <!-- DAO implementation declaration-->
+    
+ 
+    <bean id="presenceAbscencePercentage" class="com.distna.service.charts.PresenceAbscencePercentage">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+    
+    <bean id="leavesPerEmployee" class="com.distna.service.charts.LeavesPerEmployee">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+    <bean id="leavesPerLeaveType" class="com.distna.service.charts.LeavesPerLeaveType">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="employeesPerDepartment" class="com.distna.service.charts.EmployeesPerDepartment">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="weeklyTimecard" class="com.distna.service.charts.WeeklyTimecard">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+    <bean id="DesignationLevelDAO" class="com.distna.service.company.DesignationLevelDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	 <bean id="CompanyDAO" class="com.distna.service.company.CompanyDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="ZonesDAO" class="com.distna.service.company.ZonesDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	
+	<bean id="CountriesDAO" class="com.distna.service.company.CountriesDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+
+	<bean id="CurrencyListDAO" class="com.distna.service.company.CurrencyListDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	
+	<bean id="WorkspacesDAO" class="com.distna.service.company.WorkspacesDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="JobRolesDAO" class="com.distna.service.company.JobRolesDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="PriorityDAO" class="com.distna.service.company.PriorityDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="DepartmentDAO" class="com.distna.service.company.DepartmentDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	 
+	 <bean id="DesignationDAO" class="com.distna.service.company.DesignationDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="LocationDAO" class="com.distna.service.company.LocationDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="CompanyPoliciesDAO" class="com.distna.service.company.CompanyPoliciesDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="StatesDAO" class="com.distna.service.company.StatesDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="CitiesDAO" class="com.distna.service.company.CitiesDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="DivisionDAO" class="com.distna.service.company.DivisionDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="EmployeeDAO" class="com.distna.service.employee.EmployeeDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="JobPositionDAO" class="com.distna.service.company.JobPositionDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="ListsDAO" class="com.distna.service.employee.ListsDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	
+	<bean id="AddDeviceDAO" class="com.distna.service.devicemanagement.AddDeviceDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+		
+	<bean id="OfficialToursDAO" class="com.distna.service.leaves.OfficialTourDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="ShiftMasterDAO" class="com.distna.service.calendar.ShiftMasterDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="ShiftDefinitionDAO" class="com.distna.service.calendar.ShiftDefinitionDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="CalTimesDAO" class="com.distna.service.calendar.CalTimesDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="ShiftAllocationDAO" class="com.distna.service.calendar.ShiftAllocationDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="HolidaysDAO" class="com.distna.service.calendar.HolidaysDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+		<bean id="EmployeeExperiencesDAO" class="com.distna.service.employee.EmployeeExperiencesDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	
+	<bean id="EmployeeSkillsDAO" class="com.distna.service.employee.EmployeeSkillsDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+		<bean id="BankDAO" class="com.distna.service.employee.BankDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	
+	<bean id="EducationDAO" class="com.distna.service.employee.EducationDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="AssesmentDAO" class="com.distna.service.employee.AssesmentDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="ProjectsDAO" class="com.distna.service.employee.ProjectsDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+		<bean id="LeaveAllocationDAO" class="com.distna.service.leaves.LeaveAllocationDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="LeaveApplicationDAO" class="com.distna.service.leaves.LeaveApplicationDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+		<bean id="StatusDAO" class="com.distna.service.leaves.StatusDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="BreakDAO" class="com.distna.service.leaves.BreakDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="LeaveTypeDAO" class="com.distna.service.leaves.LeaveTypeDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+		<bean id="AttendanceRecordDAO" class="com.distna.service.employee.AttendanceRecordDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	
+	<bean id="AttendanceLogsDAO" class="com.distna.service.employee.AttendanceLogsDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="AttendanceLogsBulkEntryDAO" class="com.distna.service.employee.AttendanceLogsBulkEntryDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="ReportDAO" class="com.distna.service.report.ReportDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="ChartDAO" class="com.distna.service.charts.ChartDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+		<bean id="employeeMessagesDAO" class="com.distna.service.employee.EmployeeMessagesDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="UserPrivilegeDAO" class="com.distna.service.employee.UserPrivilegeDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	
+	<bean id="EmployeePrivilegeDAO" class="com.distna.service.employee.EmployeePrivilegeDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	
+	<bean id="ContractorDAO" class="com.distna.service.company.ContractorDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	
+	<bean id="OutForWorkDAO" class="com.distna.service.leaves.OutForWorkDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="AllowedDevicesDAO" class="com.distna.service.devicemanagement.AllowedDevicesDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	
+	<bean id="UserInfoDAO" class="com.distna.service.devicemanagement.UserInfoDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="MasterSettingsDAO" class="com.distna.service.company.MasterSettingsDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="AttendanceLogsOutdoorEntryDAO" class="com.distna.service.employee.AttendanceLogsOutdoorEntryDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="CanteenItemsDAO" class="com.distna.service.company.CanteenItemsDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="CanteenTimingsDAO" class="com.distna.service.company.CanteenTimingsDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="VisitorLogsDAO" class="com.distna.service.visitor.VisitorLogsDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="VisitorsDAO" class="com.distna.service.visitor.VisitorsDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="VehicleDetailsDAO" class="com.distna.service.visitor.VehicleDetailsDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="VehicleLogsDAO" class="com.distna.service.visitor.VehicleLogsDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="VisitorGatesDAO" class="com.distna.service.visitor.VisitorGatesDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="PurposeDAO" class="com.distna.service.visitor.PurposeDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="MasterPrivilegesDAO" class="com.distna.service.privileges.MasterPrivilegesDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="AttendanceDAO" class="com.distna.service.employee.AttendanceDAOImpl">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	
+	
+</beans>

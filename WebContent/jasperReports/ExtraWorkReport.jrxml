@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ExtraWorkReport" pageWidth="1000" pageHeight="595" orientation="Landscape" columnWidth="960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Report_Title" class="java.lang.String"/>
+	<parameter name="imagePath" class="java.lang.String"/>
+	<parameter name="Department_Name" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT  emp.employee_id, emp.first_name, emp.last_name, att.Recorddate, SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',1) as InTime , IF(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',1)=SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',-1), 'A', SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',-1)) as OutTime, IF(TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',-1),'%H:%i:%s'),STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',1),'%H:%i:%s')) > '00:00:00' ,TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',-1),'%H:%i:%s'),STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',1),'%H:%i:%s')) , TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',1),'%H:%i:%s'),STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',-1),'%H:%i:%s'))) as WorkDuration , TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.endDateAndTime,' ',-1),'%H:%i:%s'), STR_TO_DATE(SUBSTRING_INDEX(att.startDateAndTime,' ',-1),'%H:%i:%s')) as ShiftDuration, IF(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',1)=SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',-1) , '00:00:00' , IF(TIMEDIFF(TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',-1),'%H:%i:%s'), STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',1),'%H:%i:%s' )), TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.endDateAndTime,' ',-1),'%H:%i:%s'), STR_TO_DATE(SUBSTRING_INDEX(att.startDateAndTime,' ',-1),'%H:%i:%s' )))> '00:00:00:', TIMEDIFF(TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',-1),'%H:%i:%s'), STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',1),'%H:%i:%s' )), TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.endDateAndTime,' ',-1),'%H:%i:%s'), STR_TO_DATE(SUBSTRING_INDEX(att.startDateAndTime,' ',-1),'%H:%i:%s' ))) , TIMEDIFF(TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',1),'%H:%i:%s'), STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',-1),'%H:%i:%s')), TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.endDateAndTime,' ',-1),'%H:%i:%s'), STR_TO_DATE(SUBSTRING_INDEX(att.startDateAndTime,' ',-1),'%H:%i:%s' ))) )) as ExtraWork  FROM attendance_logs_bulk_entry as att inner join employees as emp on emp.employee_id=att.WorkID where IF(TIMEDIFF(TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',-1),'%H:%i:%s'), STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',1),'%H:%i:%s' )), TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.endDateAndTime,' ',-1),'%H:%i:%s'), STR_TO_DATE(SUBSTRING_INDEX(att.startDateAndTime,' ',-1),'%H:%i:%s' ))) > '00:00:00' , TIMEDIFF(TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',-1),'%H:%i:%s'), STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',1),'%H:%i:%s' )), TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.endDateAndTime,' ',-1),'%H:%i:%s'), STR_TO_DATE(SUBSTRING_INDEX(att.startDateAndTime,' ',-1),'%H:%i:%s' ))) > '00:00:00' , TIMEDIFF(TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',1),'%H:%i:%s'), STR_TO_DATE(SUBSTRING_INDEX(att.timeAsPerShftTimings,'~',-1),'%H:%i:%s' )), TIMEDIFF(STR_TO_DATE(SUBSTRING_INDEX(att.endDateAndTime,' ',-1),'%H:%i:%s'), STR_TO_DATE(SUBSTRING_INDEX(att.startDateAndTime,' ',-1),'%H:%i:%s' ))) > '00:00:00') AND STR_TO_DATE(att.Recorddate,'%d-%m-%Y') BETWEEN STR_TO_DATE('01-08-2013','%d-%m-%Y') AND STR_TO_DATE('21-08-2013' , '%d-%m-%Y')  ORDER BY emp.employee_id , STR_TO_DATE(att.Recorddate,'%d-%m-%Y');]]>
+	</queryString>
+	<field name="first_name" class="java.lang.String"/>
+	<field name="last_name" class="java.lang.String"/>
+	<field name="Recorddate" class="java.lang.String"/>
+	<field name="InTime" class="java.lang.String"/>
+	<field name="OutTime" class="java.lang.String"/>
+	<field name="WorkDuration" class="java.lang.String"/>
+	<field name="ShiftDuration" class="java.lang.String"/>
+	<field name="ExtraWork" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<image>
+				<reportElement  x="27" y="0" width="100" height="35"/>
+				<imageExpression><![CDATA[$P{imagePath}+"/logo.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="380" y="2" width="200" height="25"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Report_Title}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement x="816" y="57" width="141" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date().toString()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="57" width="72" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Department: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="76" y="57" width="175" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Department_Name}]]></textFieldExpression>
+			</textField>
+			
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<line>
+            	<reportElement x="0" y="0" width="960"
+            	height="1"/>
+        	</line>
+			<line>
+            	<reportElement x="0" y="0" width="1"
+            	height="30"/>
+         	</line>
+         	
+         	
+			<staticText>
+				<reportElement x="70" y="3" width="44" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="230" y="0" width="1"
+            	height="30"/>
+         	</line>
+         	
+         	
+			<staticText>
+				<reportElement x="240" y="4" width="44" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="341" y="0" width="1"
+            	height="30"/>
+         	</line>
+         	
+         	
+         	
+			<staticText>
+				<reportElement x="351" y="4" width="44" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[In Time]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="432" y="0" width="1"
+            	height="30"/>
+         	</line>
+         	
+         	
+         	
+			<staticText>
+				<reportElement x="442" y="4" width="59" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Out Time]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="534" y="0" width="1"
+            	height="30"/>
+         	</line>
+         	
+         	
+         	
+			<staticText>
+				<reportElement x="544" y="4" width="90" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work Duration]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="669" y="0" width="1"
+            	height="30"/>
+         	</line>
+         	
+         	
+         	
+			<staticText>
+				<reportElement x="679" y="4" width="81" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Shift Duration]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="801" y="0" width="1"
+            	height="30"/>
+         	</line>
+         	
+         	
+         	
+			<staticText>
+				<reportElement x="811" y="4" width="81" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Extra Work]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="960" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<line>
+            	<reportElement x="0" y="29" width="960"
+            	height="1"/>
+        	</line>
+        	
+        	
+        	
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="39" splitType="Stretch">
+			<line>
+            	<reportElement x="0" y="0" width="1"
+            	height="38"/>
+        	</line>
+        	
+        	
+			<textField>
+				<reportElement x="1" y="5" width="85" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{first_name}]]></textFieldExpression>
+			</textField>
+			
+			
+			<textField>
+				<reportElement x="95" y="5" width="85" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{last_name}]]></textFieldExpression>
+			</textField>
+			
+			<line>
+            	<reportElement x="230" y="0" width="1"
+            	height="38"/>
+        	</line>
+        	
+        	
+			<textField>
+				<reportElement x="240" y="5" width="85" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Recorddate}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="341" y="0" width="1"
+            	height="37"/>
+        	</line>
+        	
+        	
+        	
+			<textField>
+				<reportElement x="351" y="5" width="85" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{InTime}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="432" y="0" width="1"
+            	height="38"/>
+        	</line>
+        	
+        	
+        	
+			<textField>
+				<reportElement x="442" y="5" width="85" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OutTime}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="534" y="0" width="1"
+            	height="38"/>
+        	</line>
+        	
+        	
+        	
+			<textField>
+				<reportElement x="544" y="5" width="85" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{WorkDuration}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="669" y="0" width="1"
+            	height="38"/>
+        	</line>
+        	
+        	
+        	
+			<textField>
+				<reportElement x="679" y="5" width="85" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ShiftDuration}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="801" y="0" width="1"
+            	height="38"/>
+        	</line>
+        	
+        	
+        	
+        	
+			<textField>
+				<reportElement x="811" y="5" width="85" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ExtraWork}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="960" y="0" width="1"
+            	height="38"/>
+        	</line>
+        	
+        	
+        	<line>
+            	<reportElement x="0" y="38" width="960"
+            	height="1"/>
+        	</line>
+        	
+        	
+		</band>
+	</detail>
+	<summary>
+		<band height="26"/>
+	</summary>
+</jasperReport>

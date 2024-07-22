@@ -1,0 +1,982 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+<definition name="adminLayout" template="/WEB-INF/admintiles/adminLayout.jsp">
+		<put-attribute name="title" value="Admin Dashboard" />
+		<put-attribute name="header" value="/WEB-INF/admintiles/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/admintiles/menu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/admintiles/body.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/admintiles/footer.jsp" />
+	</definition>
+	
+	<definition name="loginPage" template="/WEB-INF/jsp/loginPage.jsp">
+	</definition>
+	<definition name="keyerror" template="/WEB-INF/jsp/keyerror.jsp">
+	</definition>
+	<definition name="macerror" template="/WEB-INF/jsp/macerror.jsp">
+	</definition>
+	<definition name="liekeycheck" template="/WEB-INF/jsp/liekeycheck.jsp">
+	</definition>
+	<definition name="custform" template="/WEB-INF/jsp/custform.jsp">
+	</definition>
+	<definition name="showDayDivAccMonth" template="/WEB-INF/jsp/showDayDivAccMonth.jsp">
+	</definition>
+	
+	<definition name="registerUser" template="/WEB-INF/jsp/registerUser.jsp">
+	</definition>
+	
+	<definition name="successful" template="/WEB-INF/jsp/successful.jsp">
+	</definition>
+	
+		<definition name="addOtherDetails" template="/WEB-INF/jsp/addOtherDetails.jsp">
+	</definition>
+	
+	
+	<definition name="showEmployeeFolderPath" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showEmployeeFolderPath.jsp" />
+	</definition>
+	
+	<definition name="showMasterSettings" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showMasterSettings.jsp" />
+	</definition>
+	
+	<definition name="admindashboard" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/adminDashboard.jsp" />
+	</definition>
+	
+	<definition name="userdashboard" template="/WEB-INF/jsp/userdashboard.jsp">		 
+	</definition>
+	
+	<definition name="ManagerDashBoard" template="/WEB-INF/jsp/ManagerDashBoard.jsp">		 
+	</definition>
+	
+	
+	<definition name="designationlevelpage" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/designationlevelpage.jsp" />
+	</definition>
+	
+	<definition name="companypage" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/companypage.jsp" />
+	</definition>
+	
+	<definition name="viewcompanylist" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewcompanylist.jsp" />
+	</definition>
+	
+	<definition name="updatecompany" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/updatecompany.jsp" />
+	</definition>
+	
+	<definition name="viewdesignationlevel" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewdesignationlevel.jsp" />
+	</definition>
+	<definition name="updatedesignationlevel" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/updatedesignationlevel.jsp" />
+	</definition>
+	<definition name="showaddworkspaces" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showaddworkspaces.jsp" />
+	</definition>
+	
+	<definition name="viewworkspaces" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewworkspaces.jsp" />
+	</definition>
+	
+	<definition name="updateworkspace" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/updateworkspace.jsp" />
+	</definition>
+	
+	<definition name="showaddjobroles" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showaddjobroles.jsp" />
+	</definition>
+	
+	<definition name="addprioritydiv" template="/WEB-INF/jsp/addprioritydiv.jsp">		 
+	</definition>
+
+	<definition name="viewjobroles" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewjobroles.jsp" />
+	</definition>
+	
+	<definition name="updatejobroles" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/updatejobroles.jsp" />
+	</definition>
+	
+	<definition name="showaddcompanypolicies" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showaddcompanypolicies.jsp" />
+	</definition>
+	
+	
+	<definition name="viewcompanypolicies" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewcompanypolicies.jsp" />
+	</definition>
+	
+	<definition name="updatecompanypolicies" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/updatecompanypolicies.jsp" />
+	</definition>
+	
+	
+		<definition name="addlocation" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/addlocation.jsp" />
+		</definition>
+		
+		<definition name="addlocationinternally" template="/WEB-INF/jsp/addlocation.jsp">		 
+		</definition>
+	
+	
+	<definition name="viewlocation" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewlocation.jsp" />
+	</definition>
+	
+	<definition name="editlocation" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/editlocation.jsp" />
+	</definition>
+	
+	
+	<definition name="showStateDiv" template="/WEB-INF/jsp/showStateDiv.jsp">		 
+	</definition>
+	
+	<definition name="showCityDiv" template="/WEB-INF/jsp/showCityDiv.jsp">		 
+	</definition>
+	
+	<definition name="showStateDivLang" template="/WEB-INF/jsp/showStateDivLang.jsp">		 
+	</definition>
+		
+	
+	
+	<definition name="showCitiesDiv" template="/WEB-INF/jsp/showCitiesDiv.jsp">		 
+	</definition>
+	
+	<definition name="showLanguageDiv" template="/WEB-INF/jsp/showLanguageDiv.jsp">		 
+	</definition>
+	
+	<definition name="departments" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/departments.jsp" />
+	</definition>
+	
+	<definition name="editdepartment" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/editdepartment.jsp" />
+	</definition>
+		
+	<definition name="viewdepartments" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewdepartments.jsp" />
+	</definition>
+	
+	
+	<definition name="designation" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/designation.jsp" />
+	</definition>
+	
+	
+	<definition name="viewdesignation" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewdesignation.jsp" />
+	</definition>
+	
+	
+	
+	<definition name="editdesignation" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/editdesignation.jsp" />
+	</definition>
+	
+	
+	<definition name="showDepartmentDiv" template="/WEB-INF/jsp/showDepartmentDiv.jsp">		 
+	</definition>
+	
+	<definition name="designationAdd" template="/WEB-INF/jsp/designationAdd.jsp">		 
+	</definition>
+	
+		<definition name="showadddivision" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showadddivision.jsp" />
+	</definition>
+	
+	
+	<definition name="showviewdivision" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewdivision.jsp" />
+	</definition>
+	
+	
+	<definition name="updateDivision" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/updateDivision.jsp" />
+	</definition>
+	
+	
+	<definition name="addlocationdataselfclose" template="/WEB-INF/jsp/addlocationdataselfclose.jsp">		 
+	</definition>
+	
+	
+	<definition name="showaddemployees" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showaddemployees.jsp" />
+	</definition>
+	
+	
+	
+	
+		<definition name="showaddemployees1" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showaddemployees1.jsp" />
+	</definition>
+	
+	
+	
+	
+	
+	
+	
+	<definition name="addattendancedevice" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/addattendancedevice.jsp" />
+	</definition>
+	
+	
+	
+	<definition name="testconnection" template="/WEB-INF/jsp/testconnection.jsp" >		 
+	</definition>
+	
+	
+	<definition name="updateattendancedevice" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/updateattendancedevice.jsp" />
+	</definition>
+	
+	<definition name="showdeviceinfodiv" template="/WEB-INF/jsp/showdeviceinfodiv.jsp" >		 
+	</definition>
+	
+	<definition name="changedeviceip" template="/WEB-INF/jsp/changedeviceip.jsp" >		 
+	</definition>
+	
+	<definition name="deviceinfodiv" template="/WEB-INF/jsp/deviceinfodiv.jsp" >		 
+	</definition>
+	
+	
+		<definition name="showOfficialTour" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showOfficialTour.jsp" />
+	</definition>
+	
+	<definition name="viewUpdateOfficialTour" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewUpdateOfficialTour.jsp" />
+	</definition>
+	
+	<definition name="updateOfficialTour" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/updateOfficialTour.jsp" />
+	</definition>
+	
+	<definition name="showShiftMaster" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showShiftMaster.jsp" />
+	</definition>
+	
+	<definition name="viewUpdateShiftMaster" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewUpdateShiftMaster.jsp" />
+	</definition>
+	
+	<definition name="updateShiftMaster" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/updateShiftMaster.jsp" />
+	</definition>
+	
+	<definition name="createShiftDefinition" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/createShiftDefinition.jsp" />
+	</definition>
+	
+	
+	
+	<definition name="showshiftdefinitionupdate" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showshiftdefinitionupdate.jsp" />
+	</definition>
+	
+		<definition name="shiftallocationsingleemployee" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/shiftallocationsingleemployee.jsp" />
+	</definition>
+	
+	<definition name="viewemployeecalendar" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewemployeecalendar.jsp" />
+	</definition>
+	
+	
+	<definition name="showmonthcalender" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showmonthcalender.jsp" />
+	</definition>
+	
+	
+	<definition name="showmonthlycalendar" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showmonthlycalendar.jsp" />
+	</definition>
+	
+	<definition name="showmonthcalenderdiv" template="/WEB-INF/jsp/showmonthcalenderdiv.jsp">		 
+	</definition>
+	
+	
+	<definition name="showmonthcalenderinternaldiv" template="/WEB-INF/jsp/showmonthcalenderinternaldiv.jsp">		 
+	</definition>
+	
+	
+	<definition name="addholiday" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/addholiday.jsp" />
+	</definition>
+	
+	
+	<definition name="viewholiday" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewholiday.jsp" />
+	</definition>
+	
+	
+	<definition name="updateholiday" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/updateholiday.jsp" />
+	</definition>
+	
+	<definition name="showAddPrivileges" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showAddPrivileges.jsp" />
+	</definition>
+	
+	
+	<definition name="addexperience" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/addexperience.jsp" />
+	</definition>
+	
+	
+	<definition name="viewexperience" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewexperience.jsp" />
+	</definition>
+	
+	
+	<definition name="updateexperience" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/updateexperience.jsp" />
+	</definition>
+	
+	<definition name="addskills" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/addskills.jsp" />
+	</definition>
+	
+	
+	<definition name="viewemployeeskills" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewemployeeskills.jsp" />
+	</definition>
+	
+	<definition name="updateemployeeskills" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/updateemployeeskills.jsp" />
+	</definition>
+	
+	<definition name="jobPositions" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/jobPositions.jsp" />
+	</definition>
+	
+	<definition name="viewjobposition" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewjobposition.jsp" />
+	</definition>
+	
+	<definition name="editjobPosition" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/editjobPosition.jsp" />
+	</definition>
+	
+	<definition name="usbdownload" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/usbdownload.jsp" />
+	</definition>
+	
+	<definition name="breaks" extends="adminLayout">		 
+	<put-attribute name="body" value="/WEB-INF/jsp/breaks.jsp" />
+	</definition>
+	
+	
+	<definition name="viewbreaks" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewbreaks.jsp" />
+	</definition>
+	
+	
+	<definition name="editBreak" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/editBreak.jsp" />
+	</definition>
+	
+	
+	
+	<definition name="leavetype" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/leavetype.jsp" />
+	</definition>
+	
+	
+	<definition name="viewleavetype" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewleavetype.jsp" />
+	</definition>
+	
+	
+	<definition name="editLeaveType" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/editLeaveType.jsp" />
+	</definition>
+	
+	<definition name="leaveAllocation" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/leaveAllocation.jsp" />
+	</definition>
+	
+	<definition name="viewleaveallocation" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewleaveallocation.jsp" />
+	</definition>
+	
+	<definition name="editLeaveAllocation" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/editLeaveAllocation.jsp" />
+	</definition>
+	
+	
+	<definition name="leaveApplication" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/leaveApplication.jsp" />
+	</definition>
+	
+	
+	<definition name="showHalfDaySession" template="/WEB-INF/jsp/showHalfDaySession.jsp">		 
+	</definition>
+	
+	
+	<definition name="viewleaveApplication" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewleaveApplication.jsp" />
+	</definition>
+	
+	
+	<definition name="editLeaveApplication" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/editLeaveApplication.jsp" />
+	</definition>
+	
+	<definition name="personaldetails" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/Personal.jsp" />
+	</definition>
+	
+	<definition name="viewemployee" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewemployee.jsp" />
+	</definition>
+	
+	<definition name="editEmployees" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/editEmployees.jsp" />
+	</definition>
+	
+	
+	
+	
+	
+	
+	
+	
+	<definition name="showEmployees" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/employees.jsp" />
+	</definition>
+	
+	
+	<definition name="showEmployees1" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/employees1.jsp" />
+	</definition>
+	
+	
+	
+	
+	
+	
+	
+	<definition name="addEmployeeInfo" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/addEmployeeInfo.jsp" />
+	</definition>
+	
+	
+	<definition name="education" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/education.jsp" />
+	</definition>
+	
+	
+	<definition name="viewpersonal" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewpersonal.jsp" />
+	</definition>
+	
+	
+	<definition name="vieweducation" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/vieweducation.jsp" />
+	</definition>
+	
+	
+	<definition name="editeducation" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/editEducation.jsp" />
+	</definition>
+	
+	
+	<definition name="showassesment" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/employeeAssesment.jsp" />
+	</definition>
+	
+	
+	<definition name="viewassesment" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewassesment.jsp" />
+	</definition>
+	
+	
+	
+	<definition name="editassesment" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/editassesment.jsp" />
+	</definition>
+	
+	
+	<definition name="showaddemployeeproject" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showaddemployeeproject.jsp" />
+	</definition>
+	
+	
+	<definition name="viewemployeeproject" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewemployeeproject.jsp" />
+	</definition>
+	
+	
+	<definition name="editprojects" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/editprojects.jsp" />
+	</definition>
+	
+		<definition name="showEmployeeWiseReport" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showEmployeeWiseReport.jsp" />
+	</definition>
+
+	<definition name="showEmployeeWiseExceptionReport" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showEmployeeWiseExceptionReport.jsp" />
+	</definition>
+
+
+	<definition name="departmentwisereport" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/departmentwisereport.jsp" />
+	</definition>
+	
+<definition name="shiftwisedailyreport" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/shiftwisedailyreport.jsp" />
+	</definition>
+	
+	
+	<definition name="monthlyattendancereport" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/monthlyattendancereport.jsp" />
+	</definition>
+	
+	<definition name="monthlyReport2" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/monthlyReport2.jsp" />
+	</definition>
+	
+		<definition name="dailyattendancereport" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/dailyattendancereport.jsp" />
+	</definition>
+	
+		<definition name="showshiftwiseemployeediv" template="/WEB-INF/jsp/showshiftwiseemployeediv.jsp">		 
+	</definition>
+	
+	<definition name="showmonthcalenderdiverrormsg" template="/WEB-INF/jsp/showmonthcalenderdiverrormsg.jsp">		 
+	</definition>
+	
+		<definition name="showEmployeeTypeViewMultiple" template="/WEB-INF/jsp/MultipleEmployees.jsp">		 
+	</definition>
+
+	<definition name="showEmployeeTypeViewSingle" template="/WEB-INF/jsp/SingleEmployee.jsp">		 
+	</definition>
+	
+	
+	<definition name="departmentwiseemployeelist" template="/WEB-INF/jsp/departmentwiseemployeelist.jsp">		 
+	</definition>
+	
+	
+	<definition name="departmentwiseemployeelistleave" template="/WEB-INF/jsp/departmentwiseemployeelistleave.jsp">		 
+	</definition>
+	
+	
+	<definition name="leavereport" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/leavereport.jsp" />
+	</definition>
+	
+	<definition name="leavesperleavetype" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/leavesperleavetype.jsp" />
+	</definition>
+	
+	
+	<definition name="shiftwisemusterreport" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/shiftwisemusterreport.jsp" />
+	</definition>
+	
+	<definition name="showaddpersonaldetails" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showaddpersonaldetails.jsp" />
+	</definition>
+	
+		<definition name="showaddeducationaldetails" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/showaddeducationaldetails.jsp" />
+	</definition>
+	
+		<definition name="leavesperemployee" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/leavesperemployee.jsp" />
+	</definition>
+	
+	<definition name="employeesperdepartment" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/employeesperdepartment.jsp" />
+	</definition>
+	
+	
+	<definition name="weeklytimecard" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/weeklytimecard.jsp" />
+	</definition>
+	
+	<definition name="weeklytimecarddiv" template="/WEB-INF/jsp/weeklytimecarddiv.jsp">		 
+	</definition>
+	
+	<definition name="presenceabsencechart" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/presenceabsencechart.jsp" />
+	</definition>
+	
+	
+	<definition name="presentabsentratio" template="/WEB-INF/jsp/presentabsentratio.jsp">		 
+	</definition>
+	
+	<definition name="userdashnoardcurrentmonthInout" template="/WEB-INF/jsp/userdashnoardcurrentmonthInout.jsp">		 
+	</definition>
+	
+	<definition name="addemployeemessages" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/addemployeemessages.jsp" />
+	</definition>
+	
+	<definition name="showdeptwiseemployee" template="/WEB-INF/jsp/showdeptwiseemployee.jsp">		 
+	</definition>
+	
+	<definition name="userdashnoardinbox" template="/WEB-INF/jsp/userdashnoardinbox.jsp">		 
+	</definition>
+	
+	
+	<definition name="userdashboardshowmsg" template="/WEB-INF/jsp/userdashboardshowmsg.jsp">		 
+	</definition>
+	
+	
+	<definition name="userdashnoarddirectory" template="/WEB-INF/jsp/userdashnoarddirectory.jsp">		 
+	</definition>
+	
+	<definition name="userDashboardVisitors" template="/WEB-INF/jsp/userDashboardVisitors.jsp">		 
+	</definition>
+	
+	<definition name="adminsuserdashboard" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/userdashboard.jsp" />
+	</definition>
+	
+	<definition name="userdashboardleaveapplication" template="/WEB-INF/jsp/leaveApplication.jsp">		 
+	</definition>
+
+	<definition name="viewApplications" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewApplications.jsp" />
+	</definition>
+	
+	<definition name="appendtudentView" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/form.jsp" />
+	</definition>
+	
+	
+	<definition name="appendStudentviewinner" template="/WEB-INF/jsp/formStudentInsert.jsp">
+	</definition>
+	
+	
+	<definition name="processclassform" template="/WEB-INF/jsp/formResult.jsp">
+	</definition>
+	
+	<definition name="showCitiesTextBox" template="/WEB-INF/jsp/showcitiestextbox.jsp">
+	</definition>
+	
+	
+	<definition name="adddivisioninternally" template="/WEB-INF/jsp/adddivisioninternally.jsp">
+	</definition>
+
+
+<definition name="showaddcontractor" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showaddcontractor.jsp" />
+	</definition>	
+	
+
+<definition name="viewcontractor" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/viewcontractor.jsp" />
+	</definition>	
+
+<definition name="showupdatecontractor" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showupdatecontractor.jsp" />
+	</definition>	
+	
+		
+	<definition name="showaddprivilegesinternaldiv" template="/WEB-INF/jsp/showaddprivilegesinternaldiv.jsp">
+	</definition>
+	
+	<definition name="showupdateprivilegesdetails" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showupdateprivilegesdetails.jsp" />
+	</definition>
+	
+	
+	<definition name="changeuserpassword" template="/WEB-INF/jsp/changeuserpassword.jsp">
+	</definition>
+	
+	<definition name="showoutforwork" template="/WEB-INF/jsp/showoutforwork.jsp">
+	</definition>
+	
+
+	<definition name="viewoutforwork" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/viewoutforwork.jsp" />
+	</definition>
+	
+	
+	<definition name="viewoutforworkapproved" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/viewoutforworkapproved.jsp" />
+	</definition>
+		
+		
+		<definition name="showleavestatusreport" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showleavestatusreport.jsp" />
+	</definition>
+	
+	
+	
+	<definition name="viewprivilegesdetails" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/viewprivilegesdetails.jsp" />
+	</definition>
+	
+	<definition name="showdepartmenttree" template="/WEB-INF/jsp/showdepartmenttree.jsp">
+	</definition>
+	
+	<definition name="showworkspacetree" template="/WEB-INF/jsp/showworkspacetree.jsp">
+	</definition>
+	
+	<definition name="showusersdiv" template="/WEB-INF/jsp/showusersdiv.jsp">
+	</definition>
+	
+	<definition name="totalworkinghoursreport" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/totalworkinghoursreport.jsp" />
+	</definition>
+	
+	
+	<definition name="showrestorelogs" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showrestorelogs.jsp" />
+	</definition>
+	
+	
+	<definition name="showinnerrestore" template="/WEB-INF/jsp/showinnerrestore.jsp">
+	</definition>
+	
+	<definition name="showemployeewiseallpunchesreport" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showemployeewiseallpunchesreport.jsp" />
+	</definition>
+	
+		<definition name="shiftcalendaremployees" template="/WEB-INF/jsp/shiftcalendaremployees.jsp">
+	</definition>
+	
+	<definition name="showOutdoorEntries" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showOutdoorEntries.jsp" />
+	</definition>
+	
+	<definition name="displayDepartmentWiseEmployees" template="/WEB-INF/jsp/departmentWiseEmployees.jsp">
+	</definition>
+	
+	
+	<definition name="exportEmployeedata" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/exportEmployeedata.jsp" />
+	</definition>
+	
+	<definition name="showImportEmployeedata" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showImportEmployeedata.jsp" />
+	</definition>
+	
+	
+	<definition name="shiftWiseMonthlyBasicWorkDurReport" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/shiftWiseMonthlyBasicWorkDurReport.jsp" />
+	</definition>
+	
+	<definition name="departmentsummaryreport" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/departmentsummaryreport.jsp" />
+	</definition>
+	
+	<definition name="showMaharastraMusterRollReport" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showMaharastraMusterRollReport.jsp" />
+	</definition>
+	
+	<definition name="showDepartmentOutForWorkReport" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showDepartmentOutForWorkReport.jsp" />
+	</definition>
+	
+	<definition name="basicworkdurationreport" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/basicworkdurationreport.jsp" />
+	</definition>
+	
+	<definition name="memoreport" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/memoreport.jsp" />
+	</definition>
+	
+	<definition name="shortworkreport" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/shortworkreport.jsp" />
+	</definition>
+	
+	<definition name="extraworkreport" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/extraworkreport.jsp" />
+	</definition>
+	<definition name="addcanteenitems" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/addcanteenitems.jsp" />
+	</definition>
+	
+	
+	<definition name="viewcanteenitems" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/viewcanteenitems.jsp" />
+	</definition>
+	
+	
+	<definition name="updatecanteenitems" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/updatecanteenitems.jsp" />
+	</definition>
+	
+	
+	<definition name="addcanteentimings" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/addcanteentimings.jsp" />
+	</definition>
+	
+	
+	<definition name="viewcanteentimings" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/viewcanteentimings.jsp" />
+	</definition>
+	
+	<definition name="updatecanteentimings" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/updatecanteentimings.jsp" />
+	</definition>
+	
+	<definition name="showaddvisitorlogs" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showaddvisitorlogs.jsp" />
+	</definition>
+	
+	<definition name="viewvisitorlogs" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/viewvisitorlogs.jsp" />
+	</definition>
+	
+	<definition name="showupdatevisitorlogs" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showupdatevisitorlogs.jsp" />
+	</definition>
+	<definition name="addvisitors" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/addvisitors.jsp" />
+	</definition>
+	
+	<definition name="visitortypedropdown" template="/WEB-INF/jsp/visitortypedropdown.jsp">		 
+	</definition>
+	
+	<definition name="viewvisitors" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/viewvisitors.jsp" />
+	</definition>
+	
+	<definition name="PhotoCapture" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/PhotoCapture.jsp" />
+	</definition>
+	
+	<definition name="updatevisitor" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/updatevisitor.jsp" />
+	</definition>
+	
+	
+		<definition name="showemployeeleavestatus" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showemployeeleavestatus.jsp" />
+	</definition>
+	
+	
+	<definition name="gatesdropdown" template="/WEB-INF/jsp/gatesdropdown.jsp">
+		
+	</definition>
+	
+	<definition name="showemployeeleavestatusDiv"  template="/WEB-INF/jsp/showemployeeleavestatusdiv.jsp" />
+	
+	<definition name="showaddvehicledetails" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showaddvehicledetails.jsp" />
+	</definition>
+	
+	<definition name="viewvehicledetails" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/viewvehicledetails.jsp" />
+	</definition>
+	
+	<definition name="showupdatevehicledetails" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showupdatevehicledetails.jsp" />
+	</definition>
+	
+	<definition name="showaddvehiclelogs" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showaddvehiclelogs.jsp" />
+	</definition>
+	
+	<definition name="viewvehiclelogs" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/viewvehiclelogs.jsp" />
+	</definition>
+	
+	<definition name="showupdatevehiclelogs" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showupdatevehiclelogs.jsp" />
+	</definition>
+	
+	<definition name="showapprovedvisitors" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showapprovedvisitors.jsp" />
+	</definition>
+
+	
+	
+	<definition name="showvisitorlogswophoto" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showvisitorlogswophoto.jsp" />
+	</definition>
+	
+	<definition name="showvisitorfrequencyreport" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showvisitorfrequencyreport.jsp" />
+	</definition>
+	
+	
+	<definition name="visitorlistmultiple" template="/WEB-INF/jsp/visitorlistmultiple.jsp">
+	</definition>
+
+		<definition name="visitorlistsingle" template="/WEB-INF/jsp/visitorlistsingle.jsp">
+	</definition>
+	
+
+	
+	<definition name="showvehiclelogswophoto" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showvehiclelogswophoto.jsp" />
+	</definition>
+	
+	<definition name="showvehiclefrequencyreport" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showvehiclefrequencyreport.jsp" />
+	</definition>
+	
+	<definition name="visitorlogssearchresults" template="/WEB-INF/jsp/visitorlogssearchresults.jsp">
+	</definition>	
+	
+	<definition name="purposedropdown" template="/WEB-INF/jsp/purposedropdown.jsp">
+	</definition>
+	
+	<definition name="showimporttabledata" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showimporttabledata.jsp" />
+	</definition>
+	
+	<definition name="showvisitorMateriallogs" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showvisitorMateriallogs.jsp" />
+	</definition>
+	
+	<definition name="showvisitorlogsphoto" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showvisitorlogsphoto.jsp" />
+	</definition>
+	
+	
+	<definition name="showvehicleMateriallogs" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/showvehicleMateriallogs.jsp" />
+	</definition>
+	
+		<definition name="setProjectView" template="/WEB-INF/jsp/setProjectView.jsp">
+	</definition>
+	
+	
+	<definition name="restoredatabasebackup" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/restoredatabasebackup.jsp" />
+	</definition>
+	
+	
+<definition name="addOtherDetails" template="/WEB_INF/jsp/addOtherDetails.jsp">
+<put-attribute name="addOtherDetails" value="addOtherDetails" />
+</definition>
+
+	
+	
+	<definition name="addbank" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/addbank.jsp" />
+	</definition>
+	
+	
+	<definition name="viewemployeebank" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/viewemployeebank.jsp" />
+	</definition>
+	
+	<definition name="updateemployeebank" extends="adminLayout">		 
+		<put-attribute name="body" value="/WEB-INF/jsp/updateemployeebank.jsp" />
+	</definition>
+	
+	
+	<definition name="viewemployeeattendance" template="/WEB_INF/jsp/viewemployeeattendance.jsp" >		 
+		<put-attribute name="body" value="viewemployeeattendance" />
+	</definition>
+	                                                                                                                       
+	
+	
+</tiles-definitions>

@@ -1,0 +1,31 @@
+
+#calender {
+	FONT-SIZE: 7pt; WIDTH: 200px;
+}
+#calenderTable {
+	BORDER-RIGHT: black 2px outset; BORDER-TOP: black 2px outset; DISPLAY: none; Z-INDEX: 1; LEFT: 0px; BORDER-LEFT: black 2px outset; BORDER-BOTTOM: black 2px outset; FONT-FAMILY: Arial,Helvetica,sans-serif; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #f2f2f2
+}
+#calenderTableHead TR {
+	/* BACKGROUND-COLOR: #d2d4b8 */
+	BACKGROUND-COLOR: #666666
+}
+#calenderTableDays TR {
+	background-image:url(/images/img02.jpg);
+    color:black;
+    font-weight:bold;
+    height:25px;
+    vertical-align:middle;
+    text-align:center;    
+}
+.normalDay {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; CURSOR: pointer; BORDER-BOTTOM: black 1px solid
+}
+.hlDay {
+	BORDER-RIGHT: black 1px; BORDER-TOP: black 1px; BORDER-LEFT: black 1px; CURSOR: pointer; COLOR: #ffffff; BORDER-BOTTOM: black 1px; BACKGROUND-COLOR:#585858
+}
+.toDay {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; FONT-WEIGHT: bold; BORDER-LEFT: #000000 1px solid; CURSOR: pointer; BORDER-BOTTOM: #000000 1px solid; /* BORDER-BOTTOM: #e70 1px solid; */ COLOR:#ffffff; /* COLOR: #e70; */ BACKGROUND-COLOR: #6E6E6E; /* BACKGROUND-COLOR: #fd8 */
+}
+.choosenDay {
+	BORDER-RIGHT: #000000 1px; BORDER-TOP: #000000 1px; FONT-WEIGHT: bold; BORDER-LEFT: #000000 1px; CURSOR: pointer; COLOR: #e6e6e6; BORDER-BOTTOM: #000000 1px; BACKGROUND-COLOR: #585858
+}

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LeaveReport" pageWidth="740" pageHeight="842" columnWidth="700" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Report_Title" class="java.lang.String"/>
+	<parameter name="imagePath" class="java.lang.String"/>
+	<field name="first_name" class="java.lang.String"/>
+	<field name="last_name" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="leave_subject" class="java.lang.String"/>
+	<field name="from_date" class="java.lang.String"/>
+	<field name="to_date" class="java.lang.String"/>
+	<field name="approveFromdate" class="java.lang.String"/>
+	<field name="approveTodate" class="java.lang.String"/>
+	<field name="Status" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement  x="27" y="0" width="100" height="35"/>
+				<imageExpression><![CDATA[$P{imagePath}+"/logo.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="231" y="30" width="85" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Report_Title}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="555" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="508" y="40" width="63" height="20"/>
+				<textElement/>
+				<text><![CDATA[Department]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="592" y="40" width="63" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<line>
+            	<reportElement x="0" y="0" width="680"
+            	height="1"/>
+        	</line>
+			<line>
+            	<reportElement x="0" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="10" y="4" width="70" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="170" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="180" y="4" width="57" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Subject]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="250" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="260" y="4" width="123" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Applied Date]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="400" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="410" y="4" width="139" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Approved Date]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="100" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="110" y="4" width="49" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Surname]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="552" y="0" width="1"
+            	height="30"/>
+         	</line>
+			<staticText>
+				<reportElement x="562" y="4" width="63" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[status]]></text>
+			</staticText>
+			<line>
+            	<reportElement x="680" y="0" width="1"
+            	height="30"/>
+         	</line>
+         	<line>
+            	<reportElement x="0" y="29" width="680"
+            	height="1"/>
+        	</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="39" splitType="Stretch">
+			<line>
+            	<reportElement x="0" y="0" width="1"
+            	height="39"/>
+        	</line>
+			<textField>
+				<reportElement x="10" y="0" width="53" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{first_name}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="100" y="0" width="1"
+            	height="39"/>
+        	</line>
+			<textField>
+				<reportElement x="110" y="0" width="49" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{last_name}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="170" y="0" width="1"
+            	height="39"/>
+        	</line>
+			<textField>
+				<reportElement x="180" y="0" width="57" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{leave_subject}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="400" y="0" width="1"
+            	height="39"/>
+        	</line>
+			<textField>
+				<reportElement x="410" y="0" width="64" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{approveFromdate}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="552" y="0" width="1"
+            	height="39"/>
+        	</line>
+			<textField>
+				<reportElement x="562" y="0" width="63" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Status}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="330" y="0" width="1"
+            	height="39"/>
+        	</line>
+			<textField>
+				<reportElement x="340" y="0" width="55" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{to_date}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="250" y="0" width="1"
+            	height="39"/>
+        	</line>
+			<textField>
+				<reportElement x="260" y="0" width="68" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{from_date}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="473" y="0" width="1"
+            	height="39"/>
+        	</line>
+			<textField>
+				<reportElement x="480" y="0" width="75" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{approveTodate}]]></textFieldExpression>
+			</textField>
+			<line>
+            	<reportElement x="680" y="0" width="1"
+            	height="39"/>
+        	</line>
+        	<line>
+            	<reportElement x="0" y="38" width="680"
+            	height="1"/>
+        	</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
