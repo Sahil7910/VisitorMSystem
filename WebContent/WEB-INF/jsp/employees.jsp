@@ -121,7 +121,7 @@ String loginUser = (String) session.getAttribute("loginUser");
 				<div>
 
 					<form:input class="field text medium" path="employeeId"
-						id="employeeId" name="employeeId" />
+						id="employeeId" name="employeeId" maxlength="9"/>
 				</div> <form:errors path="employeeId" cssClass="error" /></li>
 
 

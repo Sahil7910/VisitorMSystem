@@ -86,7 +86,7 @@ input[type=text] {
 			align="center">
 			<tr>
 				<td style="font-size: 50px">Employee ID:</td>
-				<td><input name="EmployeeID" id="EmployeeID" /></td>
+				<td><input name="EmployeeID" id="EmployeeID" maxlength="9" /></td>
 			</tr>
 		</table>
 		<div align="center">

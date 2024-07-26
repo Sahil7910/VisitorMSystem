@@ -729,13 +729,10 @@ public class AdminController {
 		return modelMap;
 	}
 
-	@ResponseBody
+	
 	@RequestMapping(value = "ManagerDashBoard.htm", method = RequestMethod.POST)
-	public ModelAndView ManagerDashBoard(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			@RequestParam String Cardid) throws SQLException {
+	public ModelAndView ManagerDashBoard(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws SQLException {
 
-		String Card = Cardid;
-		System.out.println(Card);
 
 		SimpleDateFormat Date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		String timeStamp = Date.format(new Date());
@@ -2726,36 +2723,36 @@ public class AdminController {
 		return modelMap;
 	}
 
-	@RequestMapping(value = "showAddEmployees.htm", method = RequestMethod.GET)
-	public ModelAndView showAddEmployees(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			Employee employee) {
-		ModelMap modelMap = getEmployeeModelMap();
-		return new ModelAndView("showaddemployees", modelMap);
-	}
-
-	@RequestMapping(value = "addEmployee.htm", method = RequestMethod.POST)
-	public ModelAndView addEmployee(@RequestParam(value = "photoFile") MultipartFile photoFile,
-			HttpServletRequest request, HttpServletResponse response, HttpSession session, Employee employee) {
-		employeeDAO.saveEmployeeAndGetId(employee);
-
-		int currentId = employee.getEmployeeId();
-		String extension = "";
-		if (photoFile.getSize() > 0) {
-			extension = photoFile.getOriginalFilename().substring(photoFile.getOriginalFilename().lastIndexOf("."));
-		}
-		String fileName = employee.getFirstName() + "_" + employee.getLastName() + "_" + currentId + extension;
-		try {
-			Imageload imageload = new Imageload();
-			String path = imageload.uploadImage(photoFile, request, "ProfilePhotos", fileName);
-			employee.setPhoto("ProfilePhotos/" + fileName);
-			employee.setEmployeeNo(currentId);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		employeeDAO.saveOrUpdateEmployeeAndGetId(employee);
-		return new ModelAndView(new RedirectView("showAddEmployees.htm"));
-	}
+//	@RequestMapping(value = "showAddEmployees.htm", method = RequestMethod.GET)
+//	public ModelAndView showAddEmployees(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+//			Employee employee) {
+//		ModelMap modelMap = getEmployeeModelMap();
+//		return new ModelAndView("showaddemployees", modelMap);
+//	}
+//
+//	@RequestMapping(value = "addEmployee.htm", method = RequestMethod.POST)
+//	public ModelAndView addEmployee(@RequestParam(value = "photoFile") MultipartFile photoFile,
+//			HttpServletRequest request, HttpServletResponse response, HttpSession session, Employee employee) {
+//		employeeDAO.saveEmployeeAndGetId(employee);
+//
+//		int currentId = employee.getEmployeeId();
+//		String extension = "";
+//		if (photoFile.getSize() > 0) {
+//			extension = photoFile.getOriginalFilename().substring(photoFile.getOriginalFilename().lastIndexOf("."));
+//		}
+//		String fileName = employee.getFirstName() + "_" + employee.getLastName() + "_" + currentId + extension;
+//		try {
+//			Imageload imageload = new Imageload();
+//			String path = imageload.uploadImage(photoFile, request, "ProfilePhotos", fileName);
+//			employee.setPhoto("ProfilePhotos/" + fileName);
+//			employee.setEmployeeNo(currentId);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		employeeDAO.saveOrUpdateEmployeeAndGetId(employee);
+//		return new ModelAndView(new RedirectView("showAddEmployees.htm"));
+//	}
 
 	public ModelMap getDeviceModelMap() {
 		ModelMap modelMap = new ModelMap();
@@ -6125,6 +6122,13 @@ public class AdminController {
 	public ModelAndView addEmployees(@RequestParam(value = "photoFile") MultipartFile photoFile,
 			HttpServletRequest request, HttpServletResponse response, HttpSession session, Employee employee,
 			BindingResult bindingResult) {
+		
+		int eid=employee.getEmployeeId();
+		
+		//int lastFiveDigits =num  % 100000;
+
+		//System.out.println("Last 5 digits: " + lastFiveDigits);
+		
 		String encryptedPassword = null;
 		if (null != request.getParameter("state"))
 			employee.setCurrentState(Integer.parseInt(request.getParameter("state")));
