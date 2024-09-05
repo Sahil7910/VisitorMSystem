@@ -65,7 +65,7 @@ function saveTextBoxVisitorType()
 </li> --%>
 <li id="foli110" class="notranslate"><label class="desc" id="title110" for="Field110">Visitor Photo</label>
 <div>
-	<img alt="No Image" src="${visitors.visitorPhoto}" height="72" width="96"> 
+	<img src="data:image/png;base64,${visitorsListVar.profilePhoto}" height="48" width="64" alt="${visitorsListVar.profilePhoto}"/>
 </div>
 </li>
 
@@ -148,12 +148,7 @@ function saveTextBoxVisitorType()
 </div>
 </li>
 
-<li id="foli110" class="notranslate      "><label class="desc" id="title110" for="Field110">Phone Number</label>
-<div>
-	<form:input path="phoneNo" id="phoneNo" name="phoneNo" class="field text medium"/>
-	<form:errors path="phoneNo" cssClass="error"></form:errors>
-</div>
-</li>
+
 
 <li id="foli110" class="notranslate      "><label class="desc" id="title110" for="Field110">Mobile Number</label>
 <div>
@@ -172,7 +167,7 @@ function saveTextBoxVisitorType()
 <li id="foli110" class="notranslate      "><label class="desc" id="title110" for="Field110">Address</label>
 <div>
 	<form:textarea path="address" id="address" name="address" class="field textarea medium"/>
-	<form:errors path="address" cssClass="error"></form:errors>
+	
 </div>
 </li>
 
@@ -195,7 +190,8 @@ function saveTextBoxVisitorType()
 
 <li class="buttons ">
 <div>                                                <!-- initTestConnectionWindow('showTestConnection.htm',500,200); -->
-    <input class="btTxt submit" type="submit" name="save" id="save" value="Update"/> <input class="btTxt submit" type="button" style="width: 150px;" name="updatePhoto" id="updatePhoto" value="Update Visitor Photo" onclick="updateVisitorPhotoJS();"/> 
+    <input class="btTxt submit" type="submit" name="save" id="save" value="Update"/>
+     <input class="btTxt submit" type="button" style="width: 150px;" name="updatePhoto" id="updatePhoto" value="Update Visitor Photo" onclick="updateVisitorPhotoJS();"/> 
 </div>
 </li>
 

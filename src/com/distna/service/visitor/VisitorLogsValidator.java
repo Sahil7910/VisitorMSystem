@@ -29,10 +29,10 @@ public class VisitorLogsValidator implements Validator {
 		{
 			errors.rejectValue("status", "status.required", "Select Status");
 		}
-		if(visitorLogs.getGateNo()==0)
-		{
-			errors.rejectValue("gateNo", "gateNo.required", "Select Gate No");
-		}
+//		if(visitorLogs.getGateNo()==0)
+//		{
+//			errors.rejectValue("gateNo", "gateNo.required", "Select Gate No");
+//		}
 		if(visitorLogs.getPurpose().equals("0"))
 		{
 			errors.rejectValue("purpose", "purpose.required", "Select Purpose");

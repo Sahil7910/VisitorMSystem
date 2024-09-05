@@ -21,4 +21,11 @@ public interface VisitorsDAO {
 	
 	public void deleteVisitor(int visitorId);
 	
+	public int getTodayvisitorCount();
+	
+	public int getpresentVisitorCount();
+	
+	public int getTotalVisitorCount();
+	
+	public int getAllowedMeetings(int employeeid);
 }

@@ -155,7 +155,7 @@ Out Time
 </div>
 </li>
 
-<li id="foli110" class="notranslate"><label class="desc" id="title110" for="Field110">Gate No.<span id="req_23" class="req">*</span></label>
+<%-- <li id="foli110" class="notranslate"><label class="desc" id="title110" for="Field110">Gate No.<span id="req_23" class="req">*</span></label>
 <div id="gateDropdownDiv">
 	<select id="gateNoTemp" name="gateNoTemp" class="field select medium" onchange="document.getElementById('gateNo').value=this.value">
 	<option value="0" label="Select">Select</option>
@@ -174,7 +174,7 @@ Out Time
 </div>
 	
 </li>
-<form:hidden path="gateNo" id="gateNo" name="gateNo"/>
+<form:hidden path="gateNo" id="gateNo" name="gateNo"/> --%>
 
 <li id="foli110" class="notranslate"><label class="desc" id="title110" for="Field110">Badge Validity</label>
 <div>

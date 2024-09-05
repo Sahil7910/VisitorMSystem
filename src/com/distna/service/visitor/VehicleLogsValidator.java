@@ -42,10 +42,7 @@ public class VehicleLogsValidator implements Validator {
 		{
 			errors.rejectValue("concernPerson", "concernPerson.required", "Select Concerned Person");
 		}
-		if(vehicleLogs.getGateNo()==0)
-		{
-			errors.rejectValue("gateNo", "gateNo.required", "Select gate No.");
-		}
+		
 	}
 
 }

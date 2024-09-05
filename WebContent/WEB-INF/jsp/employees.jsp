@@ -257,12 +257,12 @@ String loginUser = (String) session.getAttribute("loginUser");
 
 
 
-			<li id="foli02" class="notranslate      "><label class="desc"
+			<%-- <li id="foli02" class="notranslate      "><label class="desc"
 				id="title23" for="Field23"> Group Id</label>
 				<div>
 					<form:input class="field text medium" path="groupId" id="groupId"
 						name="groupId" />
-				</div></li>
+				</div></li> --%>
 
 			<li id="foli02" class="notranslate      "><label class="desc"
 				id="title23" for="Field23"> Introduction </label>
@@ -271,7 +271,7 @@ String loginUser = (String) session.getAttribute("loginUser");
 						path="introduction" id="introduction" name="introduction" />
 				</div></li>
 
-			<li id="foli02" class="notranslate      "><label class="desc"
+			<%-- <li id="foli02" class="notranslate      "><label class="desc"
 				id="title23" for="Field23"> Work Phone</label>
 				<div>
 					<form:input class="field text medium" path="workPhone"
@@ -290,7 +290,7 @@ String loginUser = (String) session.getAttribute("loginUser");
 				<div>
 					<form:input class="field text medium" path="faxPhone" id="faxPhone"
 						name="faxPhone" />
-				</div></li>
+				</div></li> --%>
 
 
 			<li id="foli02" class="notranslate      "><label class="desc"
@@ -355,7 +355,7 @@ String loginUser = (String) session.getAttribute("loginUser");
 						name="mobile" />
 				</div> <form:errors path="mobile" cssClass="error" /></li>
 
-			<li id="foli02" class="notranslate"><label class="desc"
+			<%-- <li id="foli02" class="notranslate"><label class="desc"
 				id="title23" for="Field23"> Job Code </label>
 				<div>
 					<form:select class="field select medium" path="jobCode"
@@ -366,7 +366,7 @@ String loginUser = (String) session.getAttribute("loginUser");
 								label="${jobPositionsListVar.job_code}">${priorityListVar.job_code}</form:option>
 						</c:forEach>
 					</form:select>
-				</div></li>
+				</div></li> --%>
 
 			<li id="foli02" class="notranslate      "><label class="desc"
 				id="title23" for="Field23"> Employment Status </label>

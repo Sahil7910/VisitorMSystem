@@ -81,6 +81,42 @@ public class VisitorsDAOImpl implements VisitorsDAO {
 		}
 
 
+		@Override
+		public int getTodayvisitorCount() {
+			String hql= "Select COUNT(*) From VisitorLogs WHERE Date = CURDATE()";
+			List<Long>result=(List<Long>) hibernateTemplate.find(hql);
+			return result.get(0).intValue();
+		}
+
+
+		@Override
+		public int getpresentVisitorCount() {
+			String hql= "Select COUNT(*) From VisitorLogs WHERE isPresent = true";
+			List<Long>result=(List<Long>) hibernateTemplate.find(hql);
+			return result.get(0).intValue();
+		}
+
+
+		@Override
+		public int getTotalVisitorCount() {
+			String hql= "Select COUNT(*) From VisitorLogs";
+			List<Long>result=(List<Long>) hibernateTemplate.find(hql);
+			return result.get(0).intValue();
+		}
+
+
+		@Override
+		public int getAllowedMeetings(int employeeid) {
+			// TODO Auto-generated method stub
+			String hql= "Select COUNT(*) From VisitorLogs WHERE employeeid =? AND approvalStatus='approved'";
+			List<Long>result=(List<Long>) hibernateTemplate.find(hql,employeeid);
+			return result.get(0).intValue();
+		}
+
+
+	
+
+
 		
 
 }

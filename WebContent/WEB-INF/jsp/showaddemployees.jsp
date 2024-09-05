@@ -129,11 +129,11 @@
 						</form:select></td>
 				</tr>
 
-				<tr>
+				<%-- <tr>
 					<td width=150 style="padding-left: 0px;">Group Id</td>
 					<td width=250 style="padding-left: 0px;" align="left"><form:input
 							path="groupId" id="groupId" name="groupId" /></td>
-				</tr>
+				</tr> --%>
 
 
 				<tr>
@@ -142,13 +142,13 @@
 							path="introduction" id="introduction" name="introduction" /></td>
 				</tr>
 
-				<tr>
+				<%-- <tr>
 					<td width=150 style="padding-left: 0px;">Work Phone</td>
 					<td width=250 style="padding-left: 0px;" align="left"><form:input
 							path="workPhone" id="workPhone" name="workPhone" /></td>
-				</tr>
+				</tr> --%>
 
-				<tr>
+				<%-- <tr>
 					<td width=150 style="padding-left: 0px;">Work Phone Ext</td>
 					<td width=250 style="padding-left: 0px;" align="left"><form:input
 							path="workPhoneExt" id="workPhoneExt" name="workPhoneExt" /></td>
@@ -158,7 +158,7 @@
 					<td width=150 style="padding-left: 0px;">Fax Phone</td>
 					<td width=250 style="padding-left: 0px;" align="left"><form:input
 							path="faxPhone" id="faxPhone" name="faxPhone" /></td>
-				</tr>
+				</tr> --%>
 
 				<tr>
 					<td width=150 style="padding-left: 0px;">Current Address</td>
@@ -251,7 +251,7 @@
 				</tr>
 
 
-				<tr>
+				<%-- <tr>
 					<td width=150 style="padding-left: 0px;">Job Code</td>
 					<td width=250 style="padding-left: 0px;" align="left"><form:select
 							path="jobCode" id="jobCode" name="jobCode">
@@ -261,7 +261,7 @@
 									label="${jobPositionsListVar.job_code}">${priorityListVar.job_code}</form:option>
 							</c:forEach>
 						</form:select></td>
-				</tr>
+				</tr> --%>
 
 				<tr>
 					<td width=150 style="padding-left: 0px;">Employment Status</td>
@@ -273,7 +273,7 @@
 								<form:option value="${listsListVar.id}"
 									label="${listsListVar.name}">${listsListVar.name}</form:option>
 							</c:forEach>
-						</form:select></td>
+						</form:select></td>	
 				</tr>
 				<tr>
 					<td width=150 style="padding-left: 0px;">Created on</td>

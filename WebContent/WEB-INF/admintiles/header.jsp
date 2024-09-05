@@ -279,29 +279,29 @@ else
 			</li>
     	</ul>
     </li> -->
-    <li><a href="#">Master Settings</a>
+   <!--  <li><a href="#">Master Settings</a>
             	<ul>
-<!--                		<li><a href="showEmployeeFolderPath.htm">Employee Photo Folder Path</a></li> -->
+               		<li><a href="showEmployeeFolderPath.htm">Employee Photo Folder Path</a></li>
 					<li><a href="showMasterSettings.htm">Master settings</a></li>
 					<li><a href="showrestoredatabasebackup.htm">Restore Database Backup</a></li>
 					<li><a href="exportEmployeedata.htm">Export Employee Data</a></li>
 					<li><a href="showImportEmployeedata.htm">Import Employee Data</a></li>
                 </ul>
-    </li>
+    </li> -->
 	</ul>
 </li>
 </c:if>
 <c:if test="${employeesFlag eq true}">
-		<li><a href="#">Employees</a>
+		<!-- <li><a href="#">Employees</a>
 			<ul>
-
-<li><a href="#">Employees</a>
+ -->
+ <li><a href="#">Employees</a>
             	<ul>
                		<li><a href="showEmployees.htm">Add</a></li>
                		<li><a href="viewEmployees.htm">View</a></li>
 					
                 </ul>
-    </li>  
+    </li> 
 	
 
 <!-- <li><a href="#">Device Management</a>
@@ -311,12 +311,12 @@ else
                 </ul>
 </li> -->
 	
-    <li><a href="#">Employee Privileges</a>
+    <!-- <li><a href="#">Employee Privileges</a>
             	<ul>
                		<li><a href="showAddPrivileges.htm">Add</a></li>
                		<li><a href="viewPrivilegesDetails.htm">View</a></li>
                 </ul>
-    </li> 
+    </li>  -->
 	
  <!--    <li><a href="#">Personal</a>
             	<ul>
@@ -375,11 +375,10 @@ else
 					<li><a href="showviewmessage.htm">View</a></li>
                 </ul>
     </li> -->
-   	 </ul>
-		</li>		
-		</c:if>
+   	            		
+	 	</c:if>
 		<c:if test="${leavesFlag eq true}">
-		<li><a href="#">Leaves</a>
+		<!-- <li><a href="#">Leaves</a>
 			<ul>
 			
 			
@@ -392,8 +391,8 @@ else
      
      <li><a href="#">Leave Allocation</a>
             	<ul>
-               		<!-- <li><a href="leaveAllocation.htm">Add</a></li> -->
-               		<!-- <li><a href="viewleaveApplication.htm">View Pending Leaves</a></li> -->
+               		<li><a href="leaveAllocation.htm">Add</a></li>
+               		<li><a href="viewleaveApplication.htm">View Pending Leaves</a></li>
                		<li><a href="AllocateLeave.htm">Allocate Pending Leaves</a></li>
 					<li><a href="viewleaveAllocation.htm">View Allocated Leaves</a></li>
 					<li><a href="viewEmployeeleaveStatus.htm">View Leaves Status</a></li>
@@ -401,7 +400,7 @@ else
     </li>
     
     
-<!-- 	<li><a href="#">Breaks</a>
+	<li><a href="#">Breaks</a>
             	<ul>
                		<li><a href="breaks.htm">Add</a></li>
 					<li><a href="viewBreaks.htm">View</a></li>
@@ -414,9 +413,9 @@ else
 				<li><a href="showOfficialTour.htm">Add</a></li>
 				<li><a href="viewUpdateOfficialTour.htm">View</a></li>
 			</ul>
-	</li> -->
+	</li>
 	
-	<!-- <li><a href="#">Out For Work</a>
+	 <li><a href="#">Out For Work</a>
 			<ul>
 				<li><a href="viewOutForWork.htm">View Pending</a></li>
 				<li><a href="viewOutForWorkApproved.htm">View Approved</a></li>
@@ -426,12 +425,12 @@ else
 	
 	 
     
-    <li><a href="#">Outdoor Entries</a>
+  	 <li><a href="#">Outdoor Entries</a>
             	<ul>
                		<li><a href="showOutdoorEntries.htm">Add Entries</a></li>
 					<li><a href="viewleaveApplication.htm">View</a></li>
                 </ul>
-    </li> -->
+    </li> 
     
     <li><a href="#">Leave Application</a>
             	<ul>
@@ -440,12 +439,12 @@ else
                 </ul>
     </li>
 </ul>
-		</li>
+		</li> -->
 		</c:if>
 		
 		
 		<c:if test="${calendarFlag eq true}" >
-		<li><a href="#">Calendar</a>
+		<!-- <li><a href="#">Calendar</a>
 			<ul>
 <li><a href="#">Shift Master</a>
 				<ul>
@@ -463,7 +462,7 @@ else
 			</li>
 			<li><a href="#">Shift Calender</a>
 				<ul>
-				<!-- <li><a href="createShiftDefinition.htm">Create Shift Definition</a></li> -->
+				<li><a href="createShiftDefinition.htm">Create Shift Definition</a></li>
 				<li><a href="showMonthlyCalendar.htm">Monthly Calendar</a></li>				
 				</ul>
 			</li>
@@ -476,7 +475,7 @@ else
 			</li>
    	 </ul>
 			
-		</li>
+		</li> -->
 		</c:if>
 		
 				
@@ -528,7 +527,7 @@ else
 		<c:if test="${reportsFlag eq true}">
 		<li><a href="#">Reports</a>
 			<ul>
-			<li><a href="#">Reports</a>
+			<!-- <li><a href="#">Reports</a> -->
 				<ul>
 				<!-- <li><a href="#">Employee Wise Report</a>
 					<ul>
@@ -561,10 +560,10 @@ else
 					
                 </ul>
 				</li> -->
-				<li><a href="showdailyattendancereport.htm">Daily Attendance Report</a></li>
+				<!-- <li><a href="showdailyattendancereport.htm">Daily Attendance Report</a></li>
 				<li><a href="#" onclick="window.open('showemployeedetailsreport.htm')">Employee Personal Details Report</a></li>
 				<li><a href="monthlyAttendanceReport.htm">Monthly Attendance Report</a></li>
-				<li><a href="memoreport.htm">Memo Report</a></li>
+				<li><a href="memoreport.htm">Memo Report</a></li> -->
 					<!-- <li><a href="#">Canteen Report</a>
 					<ul>
 						<li><a href="#" onclick="window.open('canteenitemsreport.htm')">Canteen Items</a></li>
@@ -574,15 +573,15 @@ else
 				</ul>
 			</li>
 			
-			 <li><a href="shiftWiseMusterReport.htm">Muster Reports</a>
-				<!-- <ul><li><a href="shiftWiseMusterReport.htm">Muster Report</a></li>
+			<!--  <li><a href="shiftWiseMusterReport.htm">Muster Reports</a>
+				<ul><li><a href="shiftWiseMusterReport.htm">Muster Report</a></li>
 					<li><a href="basicWorkDurationReport.htm">Monthly Basic Work Duration Report</a></li>
 					<li><a href="showMaharastraMusterRollReport.htm">Maharashtra Muster Roll Report</a></li>
 					<li><a href="monthlyReport2.htm">Monthly Detail Work Duration Report</a></li>
-				</ul> -->
+				</ul>
 				</li>
-			
-			<li><a href="#">Leave Reports</a>
+			 -->
+			<!-- <li><a href="#">Leave Reports</a>
 				<ul>
 				<li><a href="showleavereport.htm">Leave Report</a></li>
 				<li><a href="showLeaveStatusReport.htm">Leaves Status</a></li>
@@ -596,14 +595,15 @@ else
 				<li><a href="showweeklytimecard.htm">Weekly Timecard</a></li>
 				<li><a href="showpresenceabsencepercent.htm">Presence Absence Percentage</a></li>
 				</ul>
-			</li>
+			</li> -->
 			<c:if test="${masterPrivilege eq true}">
 			<li><a href="#">Visitor Reports</a>
 				<ul>
+				<li><a href="visitorCount.htm">VisitorCount</a></li>
 				<li><a href="#">Daily Report</a>
 					<ul>
-						<li><a href="showvisitorlogswophoto.htm">Visitor Report Without Photo</a></li>
-						<li><a href="showvisitorlogsphoto.htm">Visitor Report With Photo</a></li>
+						<li><a href="showvisitorlogswophoto.htm">Visitor Report</a></li>
+						<!-- <li><a href="showvisitorlogsphoto.htm">Visitor Report With Photo</a></li> -->
 						<li><a href="showvehiclelogswophoto.htm">Vehicle Report</a></li>
 						<!-- <li><a href="showvehiclelogsphoto.htm">Vehicle Report With Photo</a></li> -->
 					</ul>
@@ -627,21 +627,21 @@ else
    	 </ul>
 		</li>
 		</c:if>
-		<c:if test="${deviceManagement eq true}">
-		<li><a href="#">Device Management</a>
+		<%-- <c:if test="${deviceManagement eq true}">
+		<!-- <li><a href="#">Device Management</a>
 			<ul>
                		<li><a href="addAttendanceDevice.htm">Add Device</a></li>
 					<li><a href="updateAttendanceDevice.htm">Update Device</a></li>
 					<li><a href="usbdownload.htm">USB Download</a></li>
 					<li><a href="showRestoreLogs.htm">Restore</a></li>
                 </ul>
-		</li>
-		</c:if>
+		</li> -->
+		</c:if> --%>
 		
 	<%-- 	<c:if test="${userDashboardFlag eq true}" >
 		<li><a href="showMyUserDashboard.htm">UserDashBoard</a>
 		</li>
-		</c:if> --%>
+		</c:if>  --%>
 		<!-- <li><a href="help.htm">Help</a>      	
     </li> -->
 	</ul>

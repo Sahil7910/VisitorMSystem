@@ -31,9 +31,9 @@ public class VehicleDetailsValidator implements Validator {
 		
 		VehicleDetails vehicleDetails=(VehicleDetails) object;
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "vehicleBrand", "vehicleBrand.required","Please enter vehicle brand");
-		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "vehicleModel", "vehicleModel.required","Please enter vehicle model");
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "vehicleBrand", "vehicleBrand.required","Please enter vehicle brand");
+//		
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "vehicleModel", "vehicleModel.required","Please enter vehicle model");
 		
 		if(vehicleDetails.getVehicleType().equals("0"))
 		{

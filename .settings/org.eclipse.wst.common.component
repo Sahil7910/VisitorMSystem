@@ -1,9 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="DISTNA">
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+                
+    
+    
+    <wb-module deploy-name="VisitorManagementSystem">
+                                
+        
+        
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                                
+        
+        
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="DISTNA"/>
-        <property name="java-output-path" value="/DISTNA/build/classes"/>
+                        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/WebContent"/>
+                                
+        
+        
+        <property name="java-output-path" value="/VisitorManagementSystem/build/classes"/>
+        <property name="context-root" value="VisitorManagementSystem"/>
+                            
+    
+    
     </wb-module>
+            
+
+
 </project-modules>

@@ -1,0 +1,126 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Photo Capture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        video, canvas {
+            border: 1px solid black;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+
+ <body>
+    <h2>Capture Photo via Webcam</h2>
+    <video id="video" width="320" height="240" autoplay></video>
+    <button id="capture">Capture</button>
+    <canvas id="canvas" width="320" height="240" style="display: none;"></canvas>
+    <br>
+    <img id="photo" src="" alt="Captured Photo">
+    <form id="photoForm" method="POST" enctype="multipart/form-data" action="addvisitors.htm">
+        <input type="hidden" name="photoData" id="photoData">
+        <button type="submit">Save Photo</button>
+    </form>
+
+    <script> 	
+        // Access the webcam
+        const video = document.getElementById('video');
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                video.srcObject = stream;
+            })
+            .catch((err) => {
+                console.error('Error accessing the webcam: ', err);
+            });
+
+        // Capture the photo
+        const canvas = document.getElementById('canvas');
+        const photo = document.getElementById('photo');
+        const captureButton = document.getElementById('capture');
+        const photoDataInput = document.getElementById('photoData');
+
+        captureButton.addEventListener('click', () => {
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Convert the canvas image to a data URL and set it in the img tag
+            const dataUrl = canvas.toDataURL('image/png');
+            photo.src = dataUrl;
+
+            // Set the data URL as the value of the hidden input field
+            photoDataInput.value = dataUrl;
+        });
+    </script>
+
+   
+
+</body>
+</html>
+ -->
+ 
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Visitor Registration</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+    
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+         #my_camera{
+            border: 1px solid black;
+           	margin-left: 490px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Register Visitor</h2>
+
+    <!-- Form for capturing details and photo -->
+    <form id="visitorForm" method="post" enctype="multipart/form-data" action="addvisitors.htm">
+       
+
+        <!-- Display Webcam video -->
+        <div id="my_camera"></div><br/>
+
+        <input type=button value="Capture Photo" onClick="take_snapshot()"><br/>
+        <input type="hidden" name="photo" id="photo" value=""/>
+
+        <!-- Display captured image -->
+        <div id="results"></div><br/>
+
+        <input type="submit" value="Register"/>
+    </form>
+
+    <!-- Configure and attach the webcam -->
+    <script language="JavaScript">
+	        Webcam.set({
+	            width: 320,
+	            height: 240,
+	            image_format: 'jpeg',
+	            jpeg_quality: 90,
+	        });
+	        Webcam.attach('#my_camera');
+	
+	        function take_snapshot() {
+	            Webcam.snap(function(data_uri) {
+	                document.getElementById('photo').value = data_uri;
+	                document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+	            });
+	        }
+    </script>
+</body>
+</html>
+ 

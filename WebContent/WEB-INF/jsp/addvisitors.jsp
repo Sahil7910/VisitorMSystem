@@ -9,55 +9,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Visitor</title>
-<script type="text/javascript">
-function showTextBoxVisitorType()
-{
-document.getElementById("visitorTypeText").value='';
-document.getElementById("visitorTypeDiv").style.display='none';
-document.getElementById("visitorTypeTextboxDiv").style.display='block';
-}
-
-function saveTextBoxVisitorType()
-{
-	
-	document.getElementById("visitorTypeTextboxDiv").style.display='none';
-	var visitorTypeString=document.getElementById("visitorTypeText").value;
-	if(visitorTypeString == '')
-		{
-		alert('Please enter visitor type');
-		document.getElementById("visitorTypeTextboxDiv").style.display='block';
-		return false;
-		}
-	document.getElementById("visitorTypeDiv").style.display='block';
-	var xmlhttp;
-	 if (window.XMLHttpRequest)
-	 { 
-		 xmlhttp=new XMLHttpRequest();
-	 }
-	 else
-	 { 
-		 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	 }
-	 	xmlhttp.onreadystatechange=function()
-	 	{
-	 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
-	 		{
-	 			document.getElementById("visitorTypeDiv").innerHTML=xmlhttp.responseText;
-	 		}
-	 	};
-	 	xmlhttp.open("POST","savevisitortype.htm?visitorTypeString="+visitorTypeString,true);
-	 	xmlhttp.send();	
-}
-
-
-</script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+ 
+  <style type="text/css">
+     	#my_camera{
+     	margin-left: 200px;
+     	}
+     	#capture{
+     	margin-left: 150px;
+     	matgin-top:10px;
+     	}
+     	
+     </style>
 
 </head>
 <body id="public">
 <div id="container" class="ltr">
 <form:form encType="multipart/form-data" class="wufoo leftLabel page" action="addvisitors.htm" method="POST" commandName="visitors">
 
+
+
+
 <ul>
+<div id="my_camera"></div>
+        <br/>
+        
+        Capture button
+        <input  type="button" id="capture" value="Capture Photo" onclick="take_snapshot()">
+        
+        Hidden input to store the captured photo data
+        <input  type="hidden" name="photo" id="photo" required>
+        <br/><br/>
+
 
 <li id="foli110" class="notranslate"><label class="desc" id="title110" for="Field110">Name<span id="req_23" class="req">*</span></label>
 <div>
@@ -138,12 +121,7 @@ function saveTextBoxVisitorType()
 </div>
 </li>
 
-<li id="foli110" class="notranslate"><label class="desc" id="title110" for="Field110">Phone Number</label>
-<div>
-	<form:input path="phoneNo" id="phoneNo" name="phoneNo" class="field text medium"/>
-	<form:errors path="phoneNo" cssClass="error"></form:errors>
-</div>
-</li>
+
 
 <li id="foli110" class="notranslate"><label class="desc" id="title110" for="Field110">Mobile Number<span id="req_23" class="req">*</span></label>
 <div>
@@ -162,14 +140,14 @@ function saveTextBoxVisitorType()
 <li id="foli110" class="notranslate"><label class="desc" id="title110" for="Field110">Address<span id="req_23" class="req">*</span></label>
 <div>
 	<form:textarea path="address" id="address" name="address" class="field textarea medium"/>
-	<form:errors path="address" cssClass="error"></form:errors>
+
 </div>
 </li>
 
 <li id="foli110" class="notranslate"><label class="desc" id="title110" for="Field110">Remarks</label>
 <div>
 	<form:textarea path="remarks" id="remarks" name="remarks" class="field textarea medium"/>
-	<form:errors path="remarks" cssClass="error"></form:errors>
+
 </div>
 </li>
 
@@ -194,5 +172,66 @@ function saveTextBoxVisitorType()
 
 </form:form>
 </div>
+
+<script type="text/javascript">
+Webcam.set({
+    width: 200,
+    height: 220,
+    image_format: 'jpeg',
+    jpeg_quality: 90
+});
+Webcam.attach('#my_camera');
+
+// Function to capture the photo
+function take_snapshot() {
+    Webcam.snap(function(data_uri) {
+        // Store the captured photo data in a hidden input field
+        document.getElementById('photo').value = data_uri;
+        // Optional: display the captured image
+        document.getElementById('my_camera').innerHTML = 
+            '<img src="'+data_uri+'"/>';
+    });
+}
+
+function showTextBoxVisitorType()
+{
+document.getElementById("visitorTypeText").value='';
+document.getElementById("visitorTypeDiv").style.display='none';
+document.getElementById("visitorTypeTextboxDiv").style.display='block';
+}
+
+function saveTextBoxVisitorType()
+{
+	
+	document.getElementById("visitorTypeTextboxDiv").style.display='none';
+	var visitorTypeString=document.getElementById("visitorTypeText").value;
+	if(visitorTypeString == '')
+		{
+		alert('Please enter visitor type');
+		document.getElementById("visitorTypeTextboxDiv").style.display='block';
+		return false;
+		}
+	document.getElementById("visitorTypeDiv").style.display='block';
+	var xmlhttp;
+	 if (window.XMLHttpRequest)
+	 { 
+		 xmlhttp=new XMLHttpRequest();
+	 }
+	 else
+	 { 
+		 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	 }
+	 	xmlhttp.onreadystatechange=function()
+	 	{
+	 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	 		{
+	 			document.getElementById("visitorTypeDiv").innerHTML=xmlhttp.responseText;
+	 		}
+	 	};
+	 	xmlhttp.open("POST","savevisitortype.htm?visitorTypeString="+visitorTypeString,true);
+	 	xmlhttp.send();	
+}
+</script>
+
 </body>
 </html>

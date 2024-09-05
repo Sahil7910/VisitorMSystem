@@ -56,10 +56,11 @@ public class VisitorLogsDAOImpl implements VisitorLogsDAO
 		return hibernateTemplate.find("from VisitorLogs where employeeId="+employeeId+" and approvalStatus='pending' ");
 	}
 
-	@Override
-	public List<VisitorLogs> getVisitorLogsApprovedEmployeeList() {
-		return hibernateTemplate.find("from VisitorLogs ORDER BY STR_TO_DATE(inTime,'%d-%m-%Y') desc");
-	}
+	/*
+	 * @Override public List<VisitorLogs> getVisitorLogsApprovedEmployeeList() {
+	 * return hibernateTemplate.
+	 * find("from VisitorLogs ORDER BY STR_TO_DATE(inTime,'%d-%m-%Y') desc"); }
+	 */
 
 	@Override
 	public void updateVisitorLogs(int logId) {
@@ -89,6 +90,19 @@ public class VisitorLogsDAOImpl implements VisitorLogsDAO
 		}
 		
 		return null;
+	}
+
+
+	@Override
+	public List<VisitorLogs> getVisitorLogsApprovedEmployeeList(int employeeId) {
+		// TODO Auto-generated method stub
+		return hibernateTemplate.find("from VisitorLogs where employeeId="+employeeId+" and approvalStatus='approved' and Date = CURDATE() ");
+	}
+
+	@Override
+	public List<VisitorLogs> getVisitorLogsApprovedEmployeeList() {
+		// TODO Auto-generated method stub
+		return hibernateTemplate.find("from VisitorLogs ORDER BY STR_TO_DATE(inTime,'%d-%m-%Y') desc");
 	}
 	
 }

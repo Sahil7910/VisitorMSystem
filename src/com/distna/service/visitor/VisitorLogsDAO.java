@@ -13,7 +13,8 @@ public interface VisitorLogsDAO
 	public void deleteVisitorLogs(int logId);
 	public void updateVisitorLogs(int logId);
 	public List<VisitorLogs> getVisitorLogsListAccEmployee(int employeeId);
-	public List<VisitorLogs> getVisitorLogsApprovedEmployeeList();
+	public List<VisitorLogs> getVisitorLogsApprovedEmployeeList(int employeeId);
 	public List<VisitorLogs> getVisitorLogsByVisitorName(String visitorName);
+	public List<VisitorLogs> getVisitorLogsApprovedEmployeeList();
 	
 }

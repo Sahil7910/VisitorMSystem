@@ -639,6 +639,9 @@
 	<definition name="userDashboardVisitors" template="/WEB-INF/jsp/userDashboardVisitors.jsp">		 
 	</definition>
 	
+	<definition name="userAllowedVisitors" template="/WEB-INF/jsp/userAllowedVisitors.jsp">		 
+	</definition>
+	
 	<definition name="adminsuserdashboard" extends="adminLayout">		 
 		<put-attribute name="body" value="/WEB-INF/jsp/userdashboard.jsp" />
 	</definition>
@@ -839,6 +842,10 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/addvisitors.jsp" />
 	</definition>
 	
+	<definition name="opencamera" extends="adminLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/capture.html" />
+	</definition>
+	
 	<definition name="visitortypedropdown" template="/WEB-INF/jsp/visitortypedropdown.jsp">		 
 	</definition>
 	
@@ -955,6 +962,10 @@
 	
 <definition name="addOtherDetails" template="/WEB_INF/jsp/addOtherDetails.jsp">
 <put-attribute name="addOtherDetails" value="addOtherDetails" />
+</definition>
+
+<definition name="visitorCount" extends="adminLayout">
+<put-attribute name="body" value="/WEB-INF/jsp/visitorCount.jsp" />
 </definition>
 
 	

@@ -59,7 +59,7 @@
 			<td>${outForWorksApprovedForCurrentEmployeeVar.id} </td>
 			<td>
 			<c:forEach items="${employeeList}" var="employeeListVar">
-			<c:if test="${employeeListVar.employeeId==outForWorksApprovedForCurrentEmployeeVar.employeeId}" >
+			<c:if test="${employeeListVar.employeeId==outForWorksApprovedForCurrentEmployeeVar.toEmployees}" >
 			${employeeListVar.firstName} ${employeeListVar.lastName}
 			</c:if>
 			</c:forEach>

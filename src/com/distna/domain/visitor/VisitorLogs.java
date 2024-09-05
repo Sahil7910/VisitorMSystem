@@ -16,6 +16,7 @@ public class VisitorLogs
 	private int gateNo; 
 	private String purpose; 
 	private String inTime; 
+	private String Date;
 	private String outTime="SignOut"; 
 	private String vehicle; 
 	private String vehicleNo; 
@@ -27,6 +28,7 @@ public class VisitorLogs
 	private String materialsCarried; 
 	private int visitorId;
 	private String approvalStatus="pending"; 
+	private boolean isPresent;
 	
 	@Id
 	@GeneratedValue
@@ -182,6 +184,22 @@ public class VisitorLogs
 	}
 	public void setApprovalStatus(String approvalStatus) {
 		this.approvalStatus = approvalStatus;
+	}
+	
+	@Column(name="Date")
+	public String getDate() {
+		return Date;
+	}
+	public void setDate(String date) {
+		Date = date;
+	}
+	
+	@Column(name="isPresent")
+	public boolean isPresent() {
+		return isPresent;
+	}
+	public void setPresent(boolean isPresent) {
+		this.isPresent = isPresent;
 	}
 
 	

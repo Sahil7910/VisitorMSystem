@@ -39,7 +39,7 @@ Single</label>
 <span>
 <input class="radio" type="radio" name="visitorWise" onclick="showRespectiveDiv('all','showvisitorlist.htm?');"/>
 <label class="choice" for="Field346_2" >
-All Employees</label>
+All Visitors</label>
 </span>
 </div>
 </li>
@@ -60,14 +60,18 @@ ${ErrorMsg}
 </div>
 </li>
 
-<li class="buttons ">
+<!-- <li class="buttons ">
 <div>
+
+<input  type="button" id="capture" value="Capture Photo" onclick="take_snapshot()">
 <img  src="images/pdf.png" height="30" width="30" onclick="return generateVisitorFrequencyReport('generatevisitorfrequencyreport.htm?');">
 <img  src="images/logo-excel.png" height="30" width="30" onclick="return generateVisitorFrequencyReport('generatevisitorfrequencyreportInXSL.htm?');">
 <img  src="images/word.jpg" height="30" width="30" onclick="return generateVisitorFrequencyReport('generatevisitorfrequencyreportInDocx.htm?');">
 </div>
 </li>
-</ul>
+</ul> -->
+
+<input  type="button" id="" value="Generate Report" style="margin-left: 50px;" onclick="return generateVisitorFrequencyReport('generatevisitorfrequencyreport.htm?');">
 
 </form:form>
 </div>

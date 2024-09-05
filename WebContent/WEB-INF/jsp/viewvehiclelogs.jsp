@@ -24,7 +24,7 @@
 			<td>In Time</td>
 			<td>Out Time</td>
 			<td>Purpose</td>
-			<td>Gate No.</td>
+			
 		</tr>
 		<c:forEach items="${vehicleLogsList}" var="vehicleLogsList">
 		<tr>
@@ -43,7 +43,7 @@
 			<td>${vehicleLogsList.inTime}</td>
 			<td>${vehicleLogsList.outTime}</td>
 			<td>${vehicleLogsList.purpose}</td>
-			<td>${vehicleLogsList.gateNo}</td>
+		
 		</tr>
 		</c:forEach>
 	</table>

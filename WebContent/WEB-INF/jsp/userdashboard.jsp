@@ -30,26 +30,7 @@
 
 
 
-<!--  <script type="text/javascript">
-        /* var interval =2000;
-        setInterval("getServerData()",interval); */
-       /*  
-       function aaaa()
-        {
-        	alert('hi');
-            $.getJSON("getEmployeeListOutForWork.htm", function(response){ 
-              $("#toEmployees form:options").remove();
-               /*  $("#employeeListId options").remove();  */
-                    var options = '';
-                    $.each(response, function(index, item) {
-                    	alert(item);
-                      options += '<option value="' + item + '">' + item + '</option>'; 
-                         /* options += 'form:options itemValue="employeeId" itemLabel="firstName" items="' + item + '"></option>'; */
-                        $("#toEmployees").html(options);
-                    });
-            });
-        } */
-        </script>  -->
+
 <%
 Calendar calendar = Calendar.getInstance();
 Date dateTo = calendar.getTime();
@@ -73,11 +54,11 @@ System.out.println(weekDays[calendar.getFirstDayOfWeek()].toUpperCase());
 %>
 
 </head>
-<body>
+<body onload="genericAjaxFunction('userDashboardVisitors.htm?employeeId=${loginUserEmployeeId}','POST','profileDiv');">
 
 	<div id="wrapper">
 		<!-- <div id="header"><font color="#FFFFFF" size="+1"><span style="margin-left:30px; ">HEADER</span></font></div> -->
-		<img src="images/logo white.png" align="left"
+		<img src="images/sensedgelogo.png" align="left"
 			style="padding-top: 30px;" />
 		<div style="float: right; margin-right: 10px; margin-top: 40px;">
 
@@ -94,34 +75,10 @@ System.out.println(weekDays[calendar.getFirstDayOfWeek()].toUpperCase());
 
 								<li><a href="#"
 									onclick="home('userDashboardHome.htm','GET');">Home</a></li>
+								
 								<li><a href="#"
-									onclick="genericAjaxFunction('userDashnoardInbox.htm?employeeId=${loginUserEmployeeId}','POST','profileDiv');">Inbox
-										<font color="#FFFFFF" size="1"> <c:if
-												test="${employeeMessagesListSize>0}">
-												<blink>${employeeMessagesListSize} new message(s)</blink>
-											</c:if>
-									</font>
-								</a></li>
-
-								<li><a href="#"
-									onclick="genericAjaxFunction('userDashnoardCurrentMonthInOut.htm?employeeNo=${loginUserEmployeeNo}','POST','profileDiv');">Current
-										Month Arrival/Departure</a></li>
-								<li><a href="#"
-									onclick="genericAjaxFunction('showOutForWork.htm','GET','profileDiv');">Out
-										For Work</a></li>
-
-								<li><a href="#"
-									onclick="genericAjaxFunction('userDashboardLeaveApplication.htm','POST','profileDiv');">Leave
-										Application</a></li>
-								<li><a href="#"
-									onclick="genericAjaxFunction('userDashnoardDirectory.htm?employeeId=${loginUserEmployeeId}','POST','profileDiv');">Directory</a></li>
-								<li><a href="#"
-									onclick="genericAjaxFunction('userDashboardVisitors.htm?employeeId=${loginUserEmployeeId}','POST','profileDiv');">Visitors
-										<font color="#FFFFFF" size="1"> <c:if
-												test="${visitorEntry>0}">
-												<blink>${visitorEntry} visitor(s)</blink>
-											</c:if>
-									</font>
+									onclick="genericAjaxFunction('userDashboardallowed.htm?employeeId=${loginUserEmployeeId}','POST','profileDiv');">Meetings
+										
 								</a></li>
 							</ul>
 							</nav></td>
@@ -136,10 +93,10 @@ System.out.println(weekDays[calendar.getFirstDayOfWeek()].toUpperCase());
 		<!-----------     box div ends------------>
 
 
-		<div class="content">
+		<div class="content" style="margin-left: 150px">
 			<div class="cont1" id="profileDiv"
 				style="overflow: auto; font-family: Arial;"></div>
-			<div class="cont2" style="font-family: Arial; font-size: 13px;">
+			<%-- <div class="cont2" style="font-family: Arial; font-size: 13px;">
 
 				<div class="bday">
 					<table style="width: 100%;">
@@ -215,7 +172,7 @@ System.out.println(weekDays[calendar.getFirstDayOfWeek()].toUpperCase());
 						</tr>
 						<tr>
 							<td>
-								<%--  <a href="#" onclick="callPopupWindowWithPost('weeklytimecard.htm?empId=${loginUserEmployeeId}&dateFrom=<%=dataFromString%>&dateTo=<%=dataToString%>','My Weekly Time Card','POST')"> --%>
+								 <a href="#" onclick="callPopupWindowWithPost('weeklytimecard.htm?empId=${loginUserEmployeeId}&dateFrom=<%=dataFromString%>&dateTo=<%=dataToString%>','My Weekly Time Card','POST')">
 								<!-- 	   popupWindowWithPostSize('','My Weekly Time Card','height=550px,width=860px,top=100px,left=250px,scrollbars=no,sizable=yes,toolbar=no,statusbar=no',{}); -->
 								<a href="#"
 								onclick="window.open('weeklytimecardGet.htm?empId=${loginUserEmployeeId}&dateFrom=<%=dataFromString%>&dateTo=<%=dataToString%>','height=550px','width=1060px','top=100px','left=250px','scrollbars=no','sizable=yes','toolbar=no','statusbar=no');">
@@ -227,8 +184,8 @@ System.out.println(weekDays[calendar.getFirstDayOfWeek()].toUpperCase());
 						</tr>
 					</table>
 				</div>
-			</div>
-			<div id="footer"></div>
+			</div> --%>
+			<!-- <div id="footer"></div> -->
 		</div>
 	</div>
 

@@ -1,7 +1,9 @@
 package com.distna.web.admin;
 
+import java.awt.Image;
 import java.awt.print.PrinterException;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,6 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.Reader;
@@ -21,13 +24,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -42,14 +42,16 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import javax.imageio.ImageIO;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 import javax.validation.Valid;
+import javax.xml.bind.DatatypeConverter;
 
-import org.apache.commons.collections.bag.SynchronizedSortedBag;
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFHeader;
 import org.apache.poi.hssf.usermodel.HeaderFooter;
@@ -72,7 +74,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.util.AutoPopulatingList;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -196,7 +197,6 @@ import com.distna.service.employee.AssesmentDAO;
 import com.distna.service.employee.AttendanceDAO;
 import com.distna.service.employee.AttendanceLogsBulkEntryDAO;
 import com.distna.service.employee.AttendanceLogsDAO;
-import com.distna.service.employee.AttendanceLogsDAOImpl;
 import com.distna.service.employee.AttendanceLogsOutdoorEntryDAO;
 import com.distna.service.employee.AttendanceRecordDAO;
 import com.distna.service.employee.BankDAO;
@@ -250,11 +250,10 @@ import com.distna.utility.EncryptPassword;
 import com.distna.utility.IAttApp;
 import com.distna.utility.IDatFileRead;
 import com.distna.utility.Imageload;
+import com.distna.utility.ResponseHandler;
 import com.distna.utility.SendMailTLS;
 import com.distna.utility.WriteExcel;
 import com.distna.web.login.ConnectionDao;
-import com.distna.domain.devicemanagement.CardDetails;
-import com.distna.utility.ResponseHandler;
 
 import jxl.write.WriteException;
 import net.sf.jasperreports.engine.JRException;
@@ -269,6 +268,7 @@ import net.sf.jasperreports.engine.export.JRXlsExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import sun.misc.BASE64Decoder;
+
 
 @Controller
 public class AdminController {
@@ -390,6 +390,9 @@ public class AdminController {
 	private MasterPrivilegesDAO masterPrivilegesDAO;
 	private BankDAO BankDAO;
 	private AttendanceDAO attendanceDAO;
+	
+	 @Autowired
+	    private ServletContext context;
 
 	@Autowired
 	public AdminController(AttendanceDAO attendanceDAO, MasterPrivilegesDAO masterPrivilegesDAO,
@@ -730,7 +733,7 @@ public class AdminController {
 	}
 
 	
-	@RequestMapping(value = "ManagerDashBoard.htm", method = RequestMethod.POST)
+	//@RequestMapping(value = "ManagerDashBoard.htm", method = RequestMethod.POST)
 	public ModelAndView ManagerDashBoard(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws SQLException {
 
 
@@ -9350,88 +9353,88 @@ public class AdminController {
 
 	}
 
-	@RequestMapping(value = "showAddContractor.htm", method = RequestMethod.GET)
-	public ModelAndView showAddContractor(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			Contractor contractor) {
-		ModelMap modelMap = new ModelMap();
-		modelMap.addAttribute("departmentList", departmentDAO.getDepartment());
-		return new ModelAndView("showaddcontractor", modelMap);
-	}
-
-	@RequestMapping(value = "addContractor.htm", method = RequestMethod.POST)
-	public ModelAndView addContractor(@Valid Contractor contractor, BindingResult bindingResult,
-			HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		int departmentId = contractor.getDepartment();
-		if (departmentId != 0) {
-			Departments department = departmentDAO.getDepartmentById(departmentId).get(0);
-			int divisionId = department.getDivision();
-			Division division = divisionDAO.getDivision(divisionId);
-			int locationId = division.getLocationId();
-			Location location = locationDAO.getLocationObject(locationId);
-			contractor.setDivision(divisionId);
-			contractor.setLocation(locationId);
-		}
-		if (bindingResult.hasErrors()) {
-			ModelMap modelMap = new ModelMap();
-			modelMap.addAttribute("departmentList", departmentDAO.getDepartment());
-			return new ModelAndView("showaddcontractor", modelMap);
-		} else {
-			contractorDAO.saveContractor(contractor);
-			return new ModelAndView(new RedirectView("showAddContractor.htm"));
-		}
-	}
-
-	@RequestMapping(value = "viewContractor.htm", method = RequestMethod.GET)
-	public ModelAndView viewContractor(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		ModelMap modelMap = new ModelMap();
-		modelMap.addAttribute("locationList", locationDAO.getLocation());
-		modelMap.addAttribute("departmentList", departmentDAO.getDepartment());
-		modelMap.addAttribute("divisionList", divisionDAO.getDivisionList());
-		List<Contractor> ContractorList = contractorDAO.getContractorList();
-		modelMap.addAttribute("contractorList", ContractorList);
-		modelMap.addAttribute("contractorListSize", ContractorList.size());
-		return new ModelAndView("viewcontractor", modelMap);
-	}
-
-	@RequestMapping(value = "deleteContractor.htm", method = RequestMethod.POST)
-	public ModelAndView deleteContractor(@RequestParam(value = "Id") int id, HttpServletRequest request,
-			HttpServletResponse response, HttpSession session) {
-		contractorDAO.deleteContractor(id);
-		return new ModelAndView(new RedirectView("viewContractor.htm"));
-	}
-
-	@RequestMapping(value = "showUpdateContractor.htm", method = RequestMethod.POST)
-	public ModelAndView showUpdateContractor(@RequestParam(value = "Id") int id, HttpServletRequest request,
-			HttpServletResponse response, HttpSession session) {
-		ModelMap modelMap = new ModelMap();
-		modelMap.addAttribute("contractor", contractorDAO.getContractorList(id).get(0));
-		modelMap.addAttribute("departmentList", departmentDAO.getDepartment());
-		return new ModelAndView("showupdatecontractor", modelMap);
-	}
-
-	@RequestMapping(value = "updateContractor.htm", method = RequestMethod.POST)
-	public ModelAndView updateContractor(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			@Valid Contractor contractor, BindingResult bindingResult) {
-		int departmentId = contractor.getDepartment();
-		if (departmentId != 0) {
-			Departments department = departmentDAO.getDepartmentById(departmentId).get(0);
-			int divisionId = department.getDivision();
-			Division division = divisionDAO.getDivision(divisionId);
-			int locationId = division.getLocationId();
-			Location location = locationDAO.getLocationObject(locationId);
-			contractor.setDivision(divisionId);
-			contractor.setLocation(locationId);
-		}
-		if (bindingResult.hasErrors()) {
-			ModelMap modelMap = new ModelMap();
-			modelMap.addAttribute("contractor", contractorDAO.getContractorList(contractor.getContractorId()).get(0));
-			modelMap.addAttribute("departmentList", departmentDAO.getDepartment());
-			return new ModelAndView("showupdatecontractor", modelMap);
-		} else {
-			contractorDAO.saveContractor(contractor);
-			return new ModelAndView(new RedirectView("viewContractor.htm"));
-		}
-	}
+//	@RequestMapping(value = "showAddContractor.htm", method = RequestMethod.GET)
+//	public ModelAndView showAddContractor(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+//			Contractor contractor) {
+//		ModelMap modelMap = new ModelMap();
+//		modelMap.addAttribute("departmentList", departmentDAO.getDepartment());
+//		return new ModelAndView("showaddcontractor", modelMap);
+//	}
+//
+//	@RequestMapping(value = "addContractor.htm", method = RequestMethod.POST)
+//	public ModelAndView addContractor(@Valid Contractor contractor, BindingResult bindingResult,
+//			HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+//		int departmentId = contractor.getDepartment();
+//		if (departmentId != 0) {
+//			Departments department = departmentDAO.getDepartmentById(departmentId).get(0);
+//			int divisionId = department.getDivision();
+//			Division division = divisionDAO.getDivision(divisionId);
+//			int locationId = division.getLocationId();
+//			Location location = locationDAO.getLocationObject(locationId);
+//			contractor.setDivision(divisionId);
+//			contractor.setLocation(locationId);
+//		}
+//		if (bindingResult.hasErrors()) {
+//			ModelMap modelMap = new ModelMap();
+//			modelMap.addAttribute("departmentList", departmentDAO.getDepartment());
+//			return new ModelAndView("showaddcontractor", modelMap);
+//		} else {
+//			contractorDAO.saveContractor(contractor);
+//			return new ModelAndView(new RedirectView("showAddContractor.htm"));
+//		}
+//	}
+//
+//	@RequestMapping(value = "viewContractor.htm", method = RequestMethod.GET)
+//	public ModelAndView viewContractor(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+//		ModelMap modelMap = new ModelMap();
+//		modelMap.addAttribute("locationList", locationDAO.getLocation());
+//		modelMap.addAttribute("departmentList", departmentDAO.getDepartment());
+//		modelMap.addAttribute("divisionList", divisionDAO.getDivisionList());
+//		List<Contractor> ContractorList = contractorDAO.getContractorList();
+//		modelMap.addAttribute("contractorList", ContractorList);
+//		modelMap.addAttribute("contractorListSize", ContractorList.size());
+//		return new ModelAndView("viewcontractor", modelMap);
+//	}
+//
+//	@RequestMapping(value = "deleteContractor.htm", method = RequestMethod.POST)
+//	public ModelAndView deleteContractor(@RequestParam(value = "Id") int id, HttpServletRequest request,
+//			HttpServletResponse response, HttpSession session) {
+//		contractorDAO.deleteContractor(id);
+//		return new ModelAndView(new RedirectView("viewContractor.htm"));
+//	}
+//
+//	@RequestMapping(value = "showUpdateContractor.htm", method = RequestMethod.POST)
+//	public ModelAndView showUpdateContractor(@RequestParam(value = "Id") int id, HttpServletRequest request,
+//			HttpServletResponse response, HttpSession session) {
+//		ModelMap modelMap = new ModelMap();
+//		modelMap.addAttribute("contractor", contractorDAO.getContractorList(id).get(0));
+//		modelMap.addAttribute("departmentList", departmentDAO.getDepartment());
+//		return new ModelAndView("showupdatecontractor", modelMap);
+//	}
+//
+//	@RequestMapping(value = "updateContractor.htm", method = RequestMethod.POST)
+//	public ModelAndView updateContractor(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+//			@Valid Contractor contractor, BindingResult bindingResult) {
+//		int departmentId = contractor.getDepartment();
+//		if (departmentId != 0) {
+//			Departments department = departmentDAO.getDepartmentById(departmentId).get(0);
+//			int divisionId = department.getDivision();
+//			Division division = divisionDAO.getDivision(divisionId);
+//			int locationId = division.getLocationId();
+//			Location location = locationDAO.getLocationObject(locationId);
+//			contractor.setDivision(divisionId);
+//			contractor.setLocation(locationId);
+//		}
+//		if (bindingResult.hasErrors()) {
+//			ModelMap modelMap = new ModelMap();
+//			modelMap.addAttribute("contractor", contractorDAO.getContractorList(contractor.getContractorId()).get(0));
+//			modelMap.addAttribute("departmentList", departmentDAO.getDepartment());
+//			return new ModelAndView("showupdatecontractor", modelMap);
+//		} else {
+//			contractorDAO.saveContractor(contractor);
+//			return new ModelAndView(new RedirectView("viewContractor.htm"));
+//		}
+//	}
 
 	@RequestMapping(value = "changeUserPassword.htm", method = RequestMethod.POST)
 	public ModelAndView changeUserPassword(@RequestParam(value = "employeeId") int employeeId,
@@ -9585,16 +9588,20 @@ public class AdminController {
 		return new ModelAndView("showoutforwork", modelMap);
 	}
 
-	/*
-	 * @RequestMapping(value="getEmployeeListOutForWork.htm",method=RequestMethod.
-	 * GET) public @ResponseBody List<String>
-	 * getEmployeeListOutForWork(HttpServletRequest request,HttpServletResponse
-	 * response, HttpSession session,OutForWork outForWork) { List<Employee>
-	 * employeeList=employeeDAO.getEmployeeList(); List<String>
-	 * employeeListString=new ArrayList<String>(); for(Employee
-	 * employee:employeeList) { employeeListString.add(employee.getFirstName()); }
-	 * return employeeListString; }
-	 */
+	
+	  @RequestMapping(value="getEmployeeListOutForWork.htm",method=RequestMethod. GET)
+	  public @ResponseBody List<String>getEmployeeListOutForWork(HttpServletRequest request,HttpServletResponse
+	  response, HttpSession session,OutForWork outForWork)
+	  { 
+		  List<Employee> employeeList=employeeDAO.getEmployeeList(); 
+		  List<String>employeeListString=new ArrayList<String>(); 
+		  for(Employee employee:employeeList)
+		  { 
+			  employeeListString.add(employee.getFirstName()); 
+		  }
+	  return employeeListString;
+	  }
+	 
 
 	@RequestMapping(value = "saveOutForWork.htm", method = RequestMethod.POST)
 	public ModelAndView saveOutForWork(HttpServletRequest request, HttpServletResponse response, HttpSession session,
@@ -9607,7 +9614,10 @@ public class AdminController {
 	@RequestMapping(value = "viewOutForWork.htm", method = RequestMethod.GET)
 	public ModelAndView viewOutForWork(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		ModelMap modelMap = new ModelMap();
+		
+		System.out.println("calling.....");
 		List<OutForWork> outForWorkPendingList = outForWorkDAO.getOutForWorkRequestList();
+		
 		List<OutForWork> outForWorksPendingForCurrentEmployee = new ArrayList<OutForWork>();
 		if (outForWorkPendingList.size() != 0) {
 			if (null != session.getAttribute("loginUserId")) {
@@ -9626,11 +9636,13 @@ public class AdminController {
 						outForWorksPendingForCurrentEmployee.add(outForWork);
 					}
 				}
-				modelMap.addAttribute("outForWorksPendingForCurrentEmployee", outForWorksPendingForCurrentEmployee);
 				List<Employee> employeeList = employeeDAO.getEmployeeList();
+				//modelMap.addAttribute("outForWorksPendingForCurrentEmployee", outForWorksPendingForCurrentEmployee);
+				modelMap.addAttribute("outForWorksPendingForCurrentEmployee", outForWorkPendingList);
 				modelMap.addAttribute("employeeList", employeeList);
 			}
 		}
+		System.out.println("end calling");
 
 		return new ModelAndView("viewoutforwork", modelMap);
 	}
@@ -9678,7 +9690,8 @@ public class AdminController {
 					}
 
 				}
-				modelMap.addAttribute("outForWorksApprovedForCurrentEmployee", outForWorksApprovedForCurrentEmployee);
+				//modelMap.addAttribute("outForWorksApprovedForCurrentEmployee", outForWorksApprovedForCurrentEmployee);
+				modelMap.addAttribute("outForWorksApprovedForCurrentEmployee", outForWorkApprovedList);
 				List<Employee> employeeList = employeeDAO.getEmployeeList();
 				modelMap.addAttribute("employeeList", employeeList);
 			}
@@ -10629,307 +10642,307 @@ public class AdminController {
 		// return new ModelAndView(new RedirectView("showdepartmentwisereport.htm"));
 	}
 
-	@RequestMapping(value = "showaddcanteenitems.htm", method = RequestMethod.GET)
-	public ModelAndView showAddCanteenItems(HttpServletRequest request, HttpServletResponse response,
-			HttpSession session, CanteenItems canteenItems) {
-		return new ModelAndView("addcanteenitems");
-	}
+//	@RequestMapping(value = "showaddcanteenitems.htm", method = RequestMethod.GET)
+//	public ModelAndView showAddCanteenItems(HttpServletRequest request, HttpServletResponse response,
+//			HttpSession session, CanteenItems canteenItems) {
+//		return new ModelAndView("addcanteenitems");
+//	}
+//
+//	@RequestMapping(value = "addcanteenitems.htm", method = RequestMethod.POST)
+//	public ModelAndView addCanteenItems(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+//			CanteenItems canteenItems, BindingResult bindingResult) {
+//		canteenItemsValidator.validate(canteenItems, bindingResult);
+//		if (bindingResult.hasErrors()) {
+//			return new ModelAndView("addcanteenitems");
+//		}
+//		canteenItemsDAO.saveCanteenItems(canteenItems);
+//		return new ModelAndView(new RedirectView("showaddcanteenitems.htm"));
+//	}
+//
+//	@RequestMapping(value = "showviewcanteenitems.htm", method = RequestMethod.GET)
+//	public ModelAndView showViewCanteenItems(HttpServletRequest request, HttpServletResponse response,
+//			HttpSession session, CanteenItems canteenItems) {
+//		ModelMap modelMap = new ModelMap();
+//		List<CanteenItems> canteenItemsList = canteenItemsDAO.getCanteenItemsList();
+//		modelMap.addAttribute("canteenItemsList", canteenItemsList);
+//		modelMap.addAttribute("canteenItemsListSize", canteenItemsList.size());
+//
+//		return new ModelAndView("viewcanteenitems", modelMap);
+//	}
+//
+//	@RequestMapping(value = "showupdatecanteenitems.htm", method = RequestMethod.POST)
+//	public ModelAndView showUpdateCanteenItems(@RequestParam("Id") int canteenItemId, HttpServletRequest request,
+//			HttpServletResponse response, HttpSession session) {
+//		ModelMap modelMap = new ModelMap();
+//		modelMap.addAttribute("canteenItems", canteenItemsDAO.getCanteenItem(canteenItemId));
+//		return new ModelAndView("updatecanteenitems", modelMap);
+//	}
+//
+//	@RequestMapping(value = "updatecanteenitems.htm", method = RequestMethod.POST)
+//	public ModelAndView updateCanteenItems(HttpServletRequest request, HttpServletResponse response,
+//			HttpSession session, CanteenItems canteenItems, BindingResult bindingResult) {
+//		canteenItemsValidator.validate(canteenItems, bindingResult);
+//		if (bindingResult.hasErrors()) {
+//			return new ModelAndView("addcanteenitems");
+//		}
+//		canteenItemsDAO.updateCanteenItems(canteenItems);
+//		return new ModelAndView(new RedirectView("showviewcanteenitems.htm"));
+//	}
+//
+//	@RequestMapping(value = "deletecanteenitems.htm", method = RequestMethod.POST)
+//	public ModelAndView deleteCanteenItems(@RequestParam("Id") int canteenItemId, HttpServletRequest request,
+//			HttpServletResponse response, HttpSession session) {
+//		canteenItemsDAO.deleteCanteenItems(canteenItemId);
+//		return new ModelAndView(new RedirectView("showviewcanteenitems.htm"));
+//	}
+//
+//	public ModelMap getCanteenTimingsModelMap() {
+//		ModelMap modelMap = new ModelMap();
+//		List<CalTimes> calTimesList = calTimesDAO.getCalTimes();
+//		modelMap.addAttribute("calTimesList", calTimesList);
+//		List<CanteenItems> canteenItemsList = canteenItemsDAO.getCanteenItemsList();
+//		modelMap.addAttribute("canteenItemsList", canteenItemsList);
+//
+//		return modelMap;
+//	}
+//
+//	@RequestMapping(value = "showaddcanteentimings.htm", method = RequestMethod.GET)
+//	public ModelAndView showAddCanteenTimings(HttpServletRequest request, HttpServletResponse response,
+//			HttpSession session, CanteenTimings canteenTimings) {
+//		ModelMap modelMap = getCanteenTimingsModelMap();
+//		return new ModelAndView("addcanteentimings", modelMap);
+//	}
+//
+//	@RequestMapping(value = "addcanteentimings.htm", method = RequestMethod.POST)
+//	public ModelAndView addCanteenTimings(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+//			CanteenTimings canteenTimings, BindingResult bindingResult) {
+//		ModelMap modelMap = getCanteenTimingsModelMap();
+//		DateFormat currentDateFormat = new SimpleDateFormat("HH:mm:ss");
+//		canteenTimingsValidator.validate(canteenTimings, bindingResult);
+//		if (bindingResult.hasErrors()) {
+//			return new ModelAndView("addcanteentimings", modelMap);
+//		}
+//
+//		List<CanteenTimings> canteenTimingsList = canteenTimingsDAO.getCanteenTimingsList();
+//
+//		for (CanteenTimings canteenTimingsIndex : canteenTimingsList) {
+//			try {
+//				if (currentDateFormat.parse(canteenTimings.getStartTime())
+//						.after(currentDateFormat.parse(canteenTimingsIndex.getStartTime()))
+//						&& currentDateFormat.parse(canteenTimings.getStartTime())
+//								.before(currentDateFormat.parse(canteenTimingsIndex.getEndTime()))) {
+//					modelMap.addAttribute("startTimeError",
+//							"Another canteen-timing is already present in this timespan. Please select a different start time");
+//					return new ModelAndView("addcanteentimings", modelMap);
+//				} else {
+//					modelMap.addAttribute("startTimeError", "");
+//				}
+//				if (currentDateFormat.parse(canteenTimings.getEndTime())
+//						.after(currentDateFormat.parse(canteenTimingsIndex.getStartTime()))
+//						&& currentDateFormat.parse(canteenTimings.getEndTime())
+//								.before(currentDateFormat.parse(canteenTimingsIndex.getEndTime()))) {
+//					modelMap.addAttribute("endTimeError",
+//							"Another canteen-timing is already present in this timespan. Please select a different end time");
+//					return new ModelAndView("addcanteentimings", modelMap);
+//				} else {
+//					modelMap.addAttribute("endTimeError", "");
+//				}
+//
+//			} catch (ParseException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//
+//		canteenTimingsDAO.saveCanteenTimings(canteenTimings);
+//		return new ModelAndView(new RedirectView("showaddcanteentimings.htm"));
+//	}
 
-	@RequestMapping(value = "addcanteenitems.htm", method = RequestMethod.POST)
-	public ModelAndView addCanteenItems(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			CanteenItems canteenItems, BindingResult bindingResult) {
-		canteenItemsValidator.validate(canteenItems, bindingResult);
-		if (bindingResult.hasErrors()) {
-			return new ModelAndView("addcanteenitems");
-		}
-		canteenItemsDAO.saveCanteenItems(canteenItems);
-		return new ModelAndView(new RedirectView("showaddcanteenitems.htm"));
-	}
+//	@RequestMapping(value = "showviewcanteentimings.htm", method = RequestMethod.GET)
+//	public ModelAndView showViewCanteenTimings(HttpServletRequest request, HttpServletResponse response,
+//			HttpSession session, CanteenTimings canteenTimings) {
+//		ModelMap modelMap = getCanteenTimingsModelMap();
+//		List<CanteenTimings> canteenTimingsList = canteenTimingsDAO.getCanteenTimingsList();
+//		modelMap.addAttribute("canteenTimingsList", canteenTimingsList);
+//		modelMap.addAttribute("canteenTimingsListSize", canteenTimingsList.size());
+//		return new ModelAndView("viewcanteentimings", modelMap);
+//	}
 
-	@RequestMapping(value = "showviewcanteenitems.htm", method = RequestMethod.GET)
-	public ModelAndView showViewCanteenItems(HttpServletRequest request, HttpServletResponse response,
-			HttpSession session, CanteenItems canteenItems) {
-		ModelMap modelMap = new ModelMap();
-		List<CanteenItems> canteenItemsList = canteenItemsDAO.getCanteenItemsList();
-		modelMap.addAttribute("canteenItemsList", canteenItemsList);
-		modelMap.addAttribute("canteenItemsListSize", canteenItemsList.size());
+//	@RequestMapping(value = "showupdatecanteentimings.htm", method = RequestMethod.POST)
+//	public ModelAndView showUpdateCanteenTimings(@RequestParam("Id") int canteenTimingsId, HttpServletRequest request,
+//			HttpServletResponse response, HttpSession session) {
+//		ModelMap modelMap = getCanteenTimingsModelMap();
+//		modelMap.addAttribute("canteenTimings", canteenTimingsDAO.getCanteenTiming(canteenTimingsId));
+//		return new ModelAndView("updatecanteentimings", modelMap);
+//	}
 
-		return new ModelAndView("viewcanteenitems", modelMap);
-	}
+//	@RequestMapping(value = "updatecanteentimings.htm", method = RequestMethod.POST)
+//	public ModelAndView updateCanteenTimings(HttpServletRequest request, HttpServletResponse response,
+//			HttpSession session, CanteenTimings canteenTimings, BindingResult bindingResult) {
+//
+//		ModelMap modelMap = getCanteenTimingsModelMap();
+//		DateFormat currentDateFormat = new SimpleDateFormat("HH:mm:ss");
+//
+//		canteenTimingsValidator.validate(canteenTimings, bindingResult);
+//		if (bindingResult.hasErrors()) {
+//			return new ModelAndView("updatecanteentimings", modelMap);
+//		}
+//
+//		List<CanteenTimings> canteenTimingsList = canteenTimingsDAO.getCanteenTimingsList();
+//
+//		for (CanteenTimings canteenTimingsIndex : canteenTimingsList) {
+//			try {
+//				if (canteenTimings.getTimingId() != canteenTimingsIndex.getTimingId()
+//						&& currentDateFormat.parse(canteenTimings.getStartTime())
+//								.after(currentDateFormat.parse(canteenTimingsIndex.getStartTime()))
+//						&& currentDateFormat.parse(canteenTimings.getStartTime())
+//								.before(currentDateFormat.parse(canteenTimingsIndex.getEndTime()))) {
+//					modelMap.addAttribute("startTimeError",
+//							"Another canteen-timing is already present in this timespan. Please select a different start time");
+//					return new ModelAndView("updatecanteentimings", modelMap);
+//				} else {
+//					modelMap.addAttribute("startTimeError", "");
+//				}
+//				if (canteenTimings.getTimingId() != canteenTimingsIndex.getTimingId()
+//						&& currentDateFormat.parse(canteenTimings.getEndTime())
+//								.after(currentDateFormat.parse(canteenTimingsIndex.getStartTime()))
+//						&& currentDateFormat.parse(canteenTimings.getEndTime())
+//								.before(currentDateFormat.parse(canteenTimingsIndex.getEndTime()))) {
+//					modelMap.addAttribute("endTimeError",
+//							"Another canteen-timing is already present in this timespan. Please select a different end time");
+//					return new ModelAndView("updatecanteentimings", modelMap);
+//				} else {
+//					modelMap.addAttribute("endTimeError", "");
+//				}
+//
+//			} catch (ParseException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//
+//		canteenTimingsDAO.updateCanteenTimings(canteenTimings);
+//		return new ModelAndView(new RedirectView("showviewcanteentimings.htm"));
+//	}
 
-	@RequestMapping(value = "showupdatecanteenitems.htm", method = RequestMethod.POST)
-	public ModelAndView showUpdateCanteenItems(@RequestParam("Id") int canteenItemId, HttpServletRequest request,
-			HttpServletResponse response, HttpSession session) {
-		ModelMap modelMap = new ModelMap();
-		modelMap.addAttribute("canteenItems", canteenItemsDAO.getCanteenItem(canteenItemId));
-		return new ModelAndView("updatecanteenitems", modelMap);
-	}
+//	@RequestMapping(value = "deletecanteentimings.htm", method = RequestMethod.POST)
+//	public ModelAndView deleteCanteenTimings(@RequestParam("Id") int canteenItemId, HttpServletRequest request,
+//			HttpServletResponse response, HttpSession session) {
+//		canteenTimingsDAO.deleteCanteenTimings(canteenItemId);
+//		return new ModelAndView(new RedirectView("showviewcanteentimings.htm"));
+//	}
 
-	@RequestMapping(value = "updatecanteenitems.htm", method = RequestMethod.POST)
-	public ModelAndView updateCanteenItems(HttpServletRequest request, HttpServletResponse response,
-			HttpSession session, CanteenItems canteenItems, BindingResult bindingResult) {
-		canteenItemsValidator.validate(canteenItems, bindingResult);
-		if (bindingResult.hasErrors()) {
-			return new ModelAndView("addcanteenitems");
-		}
-		canteenItemsDAO.updateCanteenItems(canteenItems);
-		return new ModelAndView(new RedirectView("showviewcanteenitems.htm"));
-	}
+//	@RequestMapping(value = "canteenitemsreport.htm", method = RequestMethod.GET)
+//	public void generateCanteenItemsReport(HttpServletRequest request, HttpServletResponse response,
+//			HttpSession session) {
+//		ServletOutputStream servletOutputStream = null;
+//		try {
+//			servletOutputStream = response.getOutputStream();
+//
+//			String path = request.getSession().getServletContext().getRealPath("jasperReports") + "\\";
+//			String exportPath = request.getSession().getServletContext().getRealPath("reports") + "\\";
+//			OutputStream exportPathXLS = new FileOutputStream(
+//					new File(request.getSession().getServletContext().getRealPath("reportsXLS") + "\\"
+//							+ "CanteenItemsReport.xls"));
+//			ResultSet rs = reportDAO.getCanteenItemsReport();
+//			String jasperPath = path + "CanteenItemsReport.jrxml";
+//			Map<String, Object> parameters = new HashMap<String, Object>();
+//			parameters.put("imagePath", request.getSession().getServletContext().getRealPath("jasperReports") + "\\");
+//			parameters.put("reportTitle", "Canteen Items Report");
+//			rs.beforeFirst();
+//			JRResultSetDataSource resultSetDataSource = new JRResultSetDataSource(rs);
+//			InputStream inputStream = new FileInputStream(jasperPath);
+//			// jasperDesign = JasperManager.loadXmlDesign(inputStream);
+//			jasperDesign = JRXmlLoader.load(inputStream);
+//			jasperReport = JasperCompileManager.compileReport(jasperDesign);
+//			jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, resultSetDataSource);
+//			JasperExportManager.exportReportToPdfFile(jasperPrint, exportPath + "CanteenItemsReport.pdf");
+//			response.setContentType("application/pdf");
+//			JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
+//
+//			ByteArrayOutputStream outputByteArray = new ByteArrayOutputStream();
+//			JRXlsExporter exporterXLS = new JRXlsExporter();
+//			exporterXLS.setParameter(JRXlsExporterParameter.JASPER_PRINT, jasperPrint);
+//			exporterXLS.setParameter(JRXlsExporterParameter.OUTPUT_STREAM, outputByteArray);
+//			exporterXLS.setParameter(JRXlsExporterParameter.IS_ONE_PAGE_PER_SHEET, Boolean.FALSE);
+//			exporterXLS.setParameter(JRXlsExporterParameter.IS_AUTO_DETECT_CELL_TYPE, Boolean.TRUE);
+//			exporterXLS.setParameter(JRXlsExporterParameter.IS_WHITE_PAGE_BACKGROUND, Boolean.FALSE);
+//			exporterXLS.setParameter(JRXlsExporterParameter.IS_REMOVE_EMPTY_SPACE_BETWEEN_ROWS, Boolean.TRUE);
+//			exporterXLS.setParameter(JRXlsExporterParameter.IS_IGNORE_CELL_BORDER, Boolean.TRUE);
+//			exporterXLS.exportReport();
+//			exportPathXLS.write(outputByteArray.toByteArray());
+//
+//			servletOutputStream.flush();
+//			servletOutputStream.close();
+//
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			StringWriter stringWriter = new StringWriter();
+//			PrintWriter printWriter = new PrintWriter(stringWriter);
+//			e.printStackTrace(printWriter);
+//			response.setContentType("text/plain");
+//		}
+//
+//	}
 
-	@RequestMapping(value = "deletecanteenitems.htm", method = RequestMethod.POST)
-	public ModelAndView deleteCanteenItems(@RequestParam("Id") int canteenItemId, HttpServletRequest request,
-			HttpServletResponse response, HttpSession session) {
-		canteenItemsDAO.deleteCanteenItems(canteenItemId);
-		return new ModelAndView(new RedirectView("showviewcanteenitems.htm"));
-	}
-
-	public ModelMap getCanteenTimingsModelMap() {
-		ModelMap modelMap = new ModelMap();
-		List<CalTimes> calTimesList = calTimesDAO.getCalTimes();
-		modelMap.addAttribute("calTimesList", calTimesList);
-		List<CanteenItems> canteenItemsList = canteenItemsDAO.getCanteenItemsList();
-		modelMap.addAttribute("canteenItemsList", canteenItemsList);
-
-		return modelMap;
-	}
-
-	@RequestMapping(value = "showaddcanteentimings.htm", method = RequestMethod.GET)
-	public ModelAndView showAddCanteenTimings(HttpServletRequest request, HttpServletResponse response,
-			HttpSession session, CanteenTimings canteenTimings) {
-		ModelMap modelMap = getCanteenTimingsModelMap();
-		return new ModelAndView("addcanteentimings", modelMap);
-	}
-
-	@RequestMapping(value = "addcanteentimings.htm", method = RequestMethod.POST)
-	public ModelAndView addCanteenTimings(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			CanteenTimings canteenTimings, BindingResult bindingResult) {
-		ModelMap modelMap = getCanteenTimingsModelMap();
-		DateFormat currentDateFormat = new SimpleDateFormat("HH:mm:ss");
-		canteenTimingsValidator.validate(canteenTimings, bindingResult);
-		if (bindingResult.hasErrors()) {
-			return new ModelAndView("addcanteentimings", modelMap);
-		}
-
-		List<CanteenTimings> canteenTimingsList = canteenTimingsDAO.getCanteenTimingsList();
-
-		for (CanteenTimings canteenTimingsIndex : canteenTimingsList) {
-			try {
-				if (currentDateFormat.parse(canteenTimings.getStartTime())
-						.after(currentDateFormat.parse(canteenTimingsIndex.getStartTime()))
-						&& currentDateFormat.parse(canteenTimings.getStartTime())
-								.before(currentDateFormat.parse(canteenTimingsIndex.getEndTime()))) {
-					modelMap.addAttribute("startTimeError",
-							"Another canteen-timing is already present in this timespan. Please select a different start time");
-					return new ModelAndView("addcanteentimings", modelMap);
-				} else {
-					modelMap.addAttribute("startTimeError", "");
-				}
-				if (currentDateFormat.parse(canteenTimings.getEndTime())
-						.after(currentDateFormat.parse(canteenTimingsIndex.getStartTime()))
-						&& currentDateFormat.parse(canteenTimings.getEndTime())
-								.before(currentDateFormat.parse(canteenTimingsIndex.getEndTime()))) {
-					modelMap.addAttribute("endTimeError",
-							"Another canteen-timing is already present in this timespan. Please select a different end time");
-					return new ModelAndView("addcanteentimings", modelMap);
-				} else {
-					modelMap.addAttribute("endTimeError", "");
-				}
-
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-		canteenTimingsDAO.saveCanteenTimings(canteenTimings);
-		return new ModelAndView(new RedirectView("showaddcanteentimings.htm"));
-	}
-
-	@RequestMapping(value = "showviewcanteentimings.htm", method = RequestMethod.GET)
-	public ModelAndView showViewCanteenTimings(HttpServletRequest request, HttpServletResponse response,
-			HttpSession session, CanteenTimings canteenTimings) {
-		ModelMap modelMap = getCanteenTimingsModelMap();
-		List<CanteenTimings> canteenTimingsList = canteenTimingsDAO.getCanteenTimingsList();
-		modelMap.addAttribute("canteenTimingsList", canteenTimingsList);
-		modelMap.addAttribute("canteenTimingsListSize", canteenTimingsList.size());
-		return new ModelAndView("viewcanteentimings", modelMap);
-	}
-
-	@RequestMapping(value = "showupdatecanteentimings.htm", method = RequestMethod.POST)
-	public ModelAndView showUpdateCanteenTimings(@RequestParam("Id") int canteenTimingsId, HttpServletRequest request,
-			HttpServletResponse response, HttpSession session) {
-		ModelMap modelMap = getCanteenTimingsModelMap();
-		modelMap.addAttribute("canteenTimings", canteenTimingsDAO.getCanteenTiming(canteenTimingsId));
-		return new ModelAndView("updatecanteentimings", modelMap);
-	}
-
-	@RequestMapping(value = "updatecanteentimings.htm", method = RequestMethod.POST)
-	public ModelAndView updateCanteenTimings(HttpServletRequest request, HttpServletResponse response,
-			HttpSession session, CanteenTimings canteenTimings, BindingResult bindingResult) {
-
-		ModelMap modelMap = getCanteenTimingsModelMap();
-		DateFormat currentDateFormat = new SimpleDateFormat("HH:mm:ss");
-
-		canteenTimingsValidator.validate(canteenTimings, bindingResult);
-		if (bindingResult.hasErrors()) {
-			return new ModelAndView("updatecanteentimings", modelMap);
-		}
-
-		List<CanteenTimings> canteenTimingsList = canteenTimingsDAO.getCanteenTimingsList();
-
-		for (CanteenTimings canteenTimingsIndex : canteenTimingsList) {
-			try {
-				if (canteenTimings.getTimingId() != canteenTimingsIndex.getTimingId()
-						&& currentDateFormat.parse(canteenTimings.getStartTime())
-								.after(currentDateFormat.parse(canteenTimingsIndex.getStartTime()))
-						&& currentDateFormat.parse(canteenTimings.getStartTime())
-								.before(currentDateFormat.parse(canteenTimingsIndex.getEndTime()))) {
-					modelMap.addAttribute("startTimeError",
-							"Another canteen-timing is already present in this timespan. Please select a different start time");
-					return new ModelAndView("updatecanteentimings", modelMap);
-				} else {
-					modelMap.addAttribute("startTimeError", "");
-				}
-				if (canteenTimings.getTimingId() != canteenTimingsIndex.getTimingId()
-						&& currentDateFormat.parse(canteenTimings.getEndTime())
-								.after(currentDateFormat.parse(canteenTimingsIndex.getStartTime()))
-						&& currentDateFormat.parse(canteenTimings.getEndTime())
-								.before(currentDateFormat.parse(canteenTimingsIndex.getEndTime()))) {
-					modelMap.addAttribute("endTimeError",
-							"Another canteen-timing is already present in this timespan. Please select a different end time");
-					return new ModelAndView("updatecanteentimings", modelMap);
-				} else {
-					modelMap.addAttribute("endTimeError", "");
-				}
-
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-		canteenTimingsDAO.updateCanteenTimings(canteenTimings);
-		return new ModelAndView(new RedirectView("showviewcanteentimings.htm"));
-	}
-
-	@RequestMapping(value = "deletecanteentimings.htm", method = RequestMethod.POST)
-	public ModelAndView deleteCanteenTimings(@RequestParam("Id") int canteenItemId, HttpServletRequest request,
-			HttpServletResponse response, HttpSession session) {
-		canteenTimingsDAO.deleteCanteenTimings(canteenItemId);
-		return new ModelAndView(new RedirectView("showviewcanteentimings.htm"));
-	}
-
-	@RequestMapping(value = "canteenitemsreport.htm", method = RequestMethod.GET)
-	public void generateCanteenItemsReport(HttpServletRequest request, HttpServletResponse response,
-			HttpSession session) {
-		ServletOutputStream servletOutputStream = null;
-		try {
-			servletOutputStream = response.getOutputStream();
-
-			String path = request.getSession().getServletContext().getRealPath("jasperReports") + "\\";
-			String exportPath = request.getSession().getServletContext().getRealPath("reports") + "\\";
-			OutputStream exportPathXLS = new FileOutputStream(
-					new File(request.getSession().getServletContext().getRealPath("reportsXLS") + "\\"
-							+ "CanteenItemsReport.xls"));
-			ResultSet rs = reportDAO.getCanteenItemsReport();
-			String jasperPath = path + "CanteenItemsReport.jrxml";
-			Map<String, Object> parameters = new HashMap<String, Object>();
-			parameters.put("imagePath", request.getSession().getServletContext().getRealPath("jasperReports") + "\\");
-			parameters.put("reportTitle", "Canteen Items Report");
-			rs.beforeFirst();
-			JRResultSetDataSource resultSetDataSource = new JRResultSetDataSource(rs);
-			InputStream inputStream = new FileInputStream(jasperPath);
-			// jasperDesign = JasperManager.loadXmlDesign(inputStream);
-			jasperDesign = JRXmlLoader.load(inputStream);
-			jasperReport = JasperCompileManager.compileReport(jasperDesign);
-			jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, resultSetDataSource);
-			JasperExportManager.exportReportToPdfFile(jasperPrint, exportPath + "CanteenItemsReport.pdf");
-			response.setContentType("application/pdf");
-			JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
-
-			ByteArrayOutputStream outputByteArray = new ByteArrayOutputStream();
-			JRXlsExporter exporterXLS = new JRXlsExporter();
-			exporterXLS.setParameter(JRXlsExporterParameter.JASPER_PRINT, jasperPrint);
-			exporterXLS.setParameter(JRXlsExporterParameter.OUTPUT_STREAM, outputByteArray);
-			exporterXLS.setParameter(JRXlsExporterParameter.IS_ONE_PAGE_PER_SHEET, Boolean.FALSE);
-			exporterXLS.setParameter(JRXlsExporterParameter.IS_AUTO_DETECT_CELL_TYPE, Boolean.TRUE);
-			exporterXLS.setParameter(JRXlsExporterParameter.IS_WHITE_PAGE_BACKGROUND, Boolean.FALSE);
-			exporterXLS.setParameter(JRXlsExporterParameter.IS_REMOVE_EMPTY_SPACE_BETWEEN_ROWS, Boolean.TRUE);
-			exporterXLS.setParameter(JRXlsExporterParameter.IS_IGNORE_CELL_BORDER, Boolean.TRUE);
-			exporterXLS.exportReport();
-			exportPathXLS.write(outputByteArray.toByteArray());
-
-			servletOutputStream.flush();
-			servletOutputStream.close();
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-			StringWriter stringWriter = new StringWriter();
-			PrintWriter printWriter = new PrintWriter(stringWriter);
-			e.printStackTrace(printWriter);
-			response.setContentType("text/plain");
-		}
-
-	}
-
-	@RequestMapping(value = "canteentimingsreport.htm", method = RequestMethod.GET)
-	public void generateCanteenTimingsReport(HttpServletRequest request, HttpServletResponse response,
-			HttpSession session) {
-		ServletOutputStream servletOutputStream = null;
-		try {
-			servletOutputStream = response.getOutputStream();
-
-			String path = request.getSession().getServletContext().getRealPath("jasperReports") + "\\";
-			String exportPath = request.getSession().getServletContext().getRealPath("reports") + "\\";
-			OutputStream exportPathXLS = new FileOutputStream(
-					new File(request.getSession().getServletContext().getRealPath("reportsXLS") + "\\"
-							+ "CanteenTimingsReport.xls"));
-			ResultSet rs = reportDAO.getCanteenTimingsReport();
-			String jasperPath = path + "CanteenTimingsReport.jrxml";
-			Map<String, Object> parameters = new HashMap<String, Object>();
-			parameters.put("imagePath", request.getSession().getServletContext().getRealPath("jasperReports") + "\\");
-			parameters.put("reportTitle", "Canteen Timings Report");
-			rs.beforeFirst();
-			JRResultSetDataSource resultSetDataSource = new JRResultSetDataSource(rs);
-			InputStream inputStream = new FileInputStream(jasperPath);
-			// jasperDesign = JasperManager.loadXmlDesign(inputStream);
-			jasperDesign = JRXmlLoader.load(inputStream);
-			jasperReport = JasperCompileManager.compileReport(jasperDesign);
-			jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, resultSetDataSource);
-			JasperExportManager.exportReportToPdfFile(jasperPrint, exportPath + "CanteenTimingsReport.pdf");
-			response.setContentType("application/pdf");
-			JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
-
-			ByteArrayOutputStream outputByteArray = new ByteArrayOutputStream();
-			JRXlsExporter exporterXLS = new JRXlsExporter();
-			exporterXLS.setParameter(JRXlsExporterParameter.JASPER_PRINT, jasperPrint);
-			exporterXLS.setParameter(JRXlsExporterParameter.OUTPUT_STREAM, outputByteArray);
-			exporterXLS.setParameter(JRXlsExporterParameter.IS_ONE_PAGE_PER_SHEET, Boolean.FALSE);
-			exporterXLS.setParameter(JRXlsExporterParameter.IS_AUTO_DETECT_CELL_TYPE, Boolean.TRUE);
-			exporterXLS.setParameter(JRXlsExporterParameter.IS_WHITE_PAGE_BACKGROUND, Boolean.FALSE);
-			exporterXLS.setParameter(JRXlsExporterParameter.IS_REMOVE_EMPTY_SPACE_BETWEEN_ROWS, Boolean.TRUE);
-			exporterXLS.setParameter(JRXlsExporterParameter.IS_IGNORE_CELL_BORDER, Boolean.TRUE);
-			exporterXLS.exportReport();
-			exportPathXLS.write(outputByteArray.toByteArray());
-
-			servletOutputStream.flush();
-			servletOutputStream.close();
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-			StringWriter stringWriter = new StringWriter();
-			PrintWriter printWriter = new PrintWriter(stringWriter);
-			e.printStackTrace(printWriter);
-			response.setContentType("text/plain");
-		}
-
-	}
+//	@RequestMapping(value = "canteentimingsreport.htm", method = RequestMethod.GET)
+//	public void generateCanteenTimingsReport(HttpServletRequest request, HttpServletResponse response,
+//			HttpSession session) {
+//		ServletOutputStream servletOutputStream = null;
+//		try {
+//			servletOutputStream = response.getOutputStream();
+//
+//			String path = request.getSession().getServletContext().getRealPath("jasperReports") + "\\";
+//			String exportPath = request.getSession().getServletContext().getRealPath("reports") + "\\";
+//			OutputStream exportPathXLS = new FileOutputStream(
+//					new File(request.getSession().getServletContext().getRealPath("reportsXLS") + "\\"
+//							+ "CanteenTimingsReport.xls"));
+//			ResultSet rs = reportDAO.getCanteenTimingsReport();
+//			String jasperPath = path + "CanteenTimingsReport.jrxml";
+//			Map<String, Object> parameters = new HashMap<String, Object>();
+//			parameters.put("imagePath", request.getSession().getServletContext().getRealPath("jasperReports") + "\\");
+//			parameters.put("reportTitle", "Canteen Timings Report");
+//			rs.beforeFirst();
+//			JRResultSetDataSource resultSetDataSource = new JRResultSetDataSource(rs);
+//			InputStream inputStream = new FileInputStream(jasperPath);
+//			// jasperDesign = JasperManager.loadXmlDesign(inputStream);
+//			jasperDesign = JRXmlLoader.load(inputStream);
+//			jasperReport = JasperCompileManager.compileReport(jasperDesign);
+//			jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, resultSetDataSource);
+//			JasperExportManager.exportReportToPdfFile(jasperPrint, exportPath + "CanteenTimingsReport.pdf");
+//			response.setContentType("application/pdf");
+//			JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
+//
+//			ByteArrayOutputStream outputByteArray = new ByteArrayOutputStream();
+//			JRXlsExporter exporterXLS = new JRXlsExporter();
+//			exporterXLS.setParameter(JRXlsExporterParameter.JASPER_PRINT, jasperPrint);
+//			exporterXLS.setParameter(JRXlsExporterParameter.OUTPUT_STREAM, outputByteArray);
+//			exporterXLS.setParameter(JRXlsExporterParameter.IS_ONE_PAGE_PER_SHEET, Boolean.FALSE);
+//			exporterXLS.setParameter(JRXlsExporterParameter.IS_AUTO_DETECT_CELL_TYPE, Boolean.TRUE);
+//			exporterXLS.setParameter(JRXlsExporterParameter.IS_WHITE_PAGE_BACKGROUND, Boolean.FALSE);
+//			exporterXLS.setParameter(JRXlsExporterParameter.IS_REMOVE_EMPTY_SPACE_BETWEEN_ROWS, Boolean.TRUE);
+//			exporterXLS.setParameter(JRXlsExporterParameter.IS_IGNORE_CELL_BORDER, Boolean.TRUE);
+//			exporterXLS.exportReport();
+//			exportPathXLS.write(outputByteArray.toByteArray());
+//
+//			servletOutputStream.flush();
+//			servletOutputStream.close();
+//
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			StringWriter stringWriter = new StringWriter();
+//			PrintWriter printWriter = new PrintWriter(stringWriter);
+//			e.printStackTrace(printWriter);
+//			response.setContentType("text/plain");
+//		}
+//
+//	}
 
 	@RequestMapping(value = "showaddvisitorlogs.htm", method = RequestMethod.GET)
 	public ModelAndView showaddvisitorlogs(HttpServletRequest request, HttpServletResponse response,
@@ -10949,6 +10962,11 @@ public class AdminController {
 	@RequestMapping(value = "addvisitorlogs.htm", method = RequestMethod.GET)
 	public ModelAndView addvisitorlogs(HttpServletRequest request, HttpServletResponse response, HttpSession session,
 			VisitorLogs visitorLogs, BindingResult bindingResult) {
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date curreDate = new Date();
+		String formattedDate= dateFormat.format(curreDate);
+		
 		VisitorLogsValidator visitorLogsValidator = new VisitorLogsValidator();
 		visitorLogsValidator.validate(visitorLogs, bindingResult);
 		if (bindingResult.hasErrors()) {
@@ -10968,7 +10986,10 @@ public class AdminController {
 			String inTime = visitorLogs.getInTime();
 			// String outTime=visitorLogs.getOutTime();
 			visitorLogs.setInTime(dateFrom + " " + inTime);
+			visitorLogs.setDate(formattedDate);
 			// visitorLogs.setOutTime(dateTo+" "+outTime);
+			visitorLogs.setPresent(true);
+			
 			visitorLogsDAO.saveVisitorLogs(visitorLogs);
 			Visitors visitors = visitorsDAO.getVisitor(visitorLogs.getVisitorId());
 			visitors.setVisitCount(visitors.getVisitCount() + 1);
@@ -11058,6 +11079,8 @@ public class AdminController {
 		String outDate = format.format(datenow);
 		VisitorLogs visitorLogs = visitorLogsDAO.getVisitorLogsList(logId).get(0);
 		visitorLogs.setOutTime(outDate);
+		visitorLogs.setPresent(false);
+		visitorLogs.setStatus("Left");
 		visitorLogsDAO.updateVisitorLogs(visitorLogs);
 		return new ModelAndView(new RedirectView("viewvisitorlogs.htm"));
 	}
@@ -11078,14 +11101,39 @@ public class AdminController {
 
 	@RequestMapping(value = "showaddvisitors.htm", method = RequestMethod.GET)
 	public ModelAndView showAddVisitors(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			Visitors visitors) {
+			Visitors visitors) throws IOException {
+		
+//		/*
+//		 * String fetching ="F:/python_project/webcam/dist/cam2.exe"; String []
+//		 * commandToExecute= new String[] {"cmd.exe","/c", fetching};
+//		 * Runtime.getRuntime().exec(commandToExecute);
+//		 */
+		 // Adjust the path to your Python executable and script
 		ModelMap modelMap = getVisitorsModelMap();
 		return new ModelAndView("addvisitors", modelMap);
+		//return new ModelAndView("opencamera", modelMap);
 	}
+	
+	
+	@RequestMapping(value = "opencamera.htm", method = RequestMethod.GET)
+	public ModelAndView opencam(HttpServletRequest request, HttpServletResponse response, HttpSession sessions) throws IOException {
+		return new ModelAndView("opencamera", modelMap);
+	}
+	
+	
+	
 
 	@RequestMapping(value = "addvisitors.htm", method = RequestMethod.POST)
-	public ModelAndView addVisitors(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			Visitors visitors, BindingResult bindingResult) {
+	public ModelAndView addVisitors( @RequestParam("photo") String photoData, HttpServletRequest request, HttpServletResponse response, HttpSession session,
+			Visitors visitors, BindingResult bindingResult) throws IOException {
+		
+		
+		
+		String name=visitors.getVisitorName();
+		
+		
+	
+		
 		ModelMap modelMap = getVisitorsModelMap();
 		VisitorValidator visitorValidator = new VisitorValidator();
 		visitorValidator.validate(visitors, bindingResult);
@@ -11097,28 +11145,116 @@ public class AdminController {
 				visitors.setVisitorType(request.getParameter("visitorTypeSelect"));
 			}
 			int visitorId = visitorsDAO.saveVisitor(visitors);
-			String projectPath = request.getSession().getServletContext().getRealPath("");
-
-			String jarPath = projectPath + "\\PhotoCaptureJar\\";
-
-			String visitorPhotoPath = projectPath + "\\VisitorPhotos";
-			File file = new File(visitorPhotoPath);
-			if (!file.exists()) {
-				file.mkdir();
-			}
-
-			String filepath = file.getAbsolutePath();
-
+			
+//			 String webContentPath = context.getRealPath("/");
+//			 String newDirectoryName = "UploadPhoto";
+//			 
+//		        File newDirectory = new File(webContentPath + File.separator + newDirectoryName);
+//		        
+//		        if (!newDirectory.exists()) {
+//		            boolean isCreated = newDirectory.mkdir();
+//		            if (isCreated) {
+//		                System.out.println("Directory '" + newDirectoryName + "' created successfully in WebContent.");
+//		                System.out.println("Directory created at: " + newDirectory.getAbsolutePath());
+//
+//		            } else {
+//		            	System.out.println("Failed to create directory '" + newDirectoryName + "'.");
+//		            }
+//		        } else {
+//		        	System.out.println("Directory '" + newDirectoryName + "' already exists in WebContent.");
+//		        }
+		        
+		        
+		        
+			
+//			String directoryName = "logs";
+//			File directory = new File(directoryName);
+//			 if (!directory.exists()) {
+//		            // Create the directory
+//		            boolean isCreated = directory.mkdir();
+//		            
+//		            if (isCreated) {
+//		                System.out.println("Directory '" + directoryName + "' created successfully.");
+//		            } else {
+//		                System.out.println("Failed to create directory '" + directoryName + "'.");
+//		            }
+//		        } else {
+//		            System.out.println("Directory '" + directoryName + "' already exists.");
+//		        }
+//			
+//			 System.out.println(new File(".").getAbsolutePath());
+			 
 			try {
-				Runtime.getRuntime().exec("java -jar \"" + jarPath + "\\CaptureVisitorPhoto.jar\" " + visitorId + " \""
-						+ filepath + "\"");
-				visitors.setVisitorPhoto("VisitorPhotos/" + visitorId + ".jpg");
-				visitorsDAO.updateVisitor(visitors);
+
+				
+				FileOutputStream fos = null;
+		     
+		            // Remove the "data:image/png;base64," prefix from the data
+		            String base64Image = photoData.split(",")[1];
+		            byte[] imageBytes = DatatypeConverter.parseBase64Binary(base64Image);
+		            
+		           String relativePath= "/VisitorPhotos/"+name+".jpg";
+//		           
+		           File file = new File(relativePath);
+//		           
+		           file.getParentFile().mkdirs();
+		           
+		           fos = new FileOutputStream(file);
+		           fos.write(imageBytes);
+		           
+		           String base64Img = DatatypeConverter.printBase64Binary(imageBytes);
+
+		           
+		           //visitors.setVisitorPhoto(base64Img); 
+		           visitors.setVisitorPhoto("VisitorPhotos/" + name + ".jpg");
+		           visitors.setProfilePhoto(base64Img);
+		
+				   visitorsDAO.updateVisitor(visitors);
+
+		           
+		            
+		           // String path=context.getRealPath();
+		            
+		  		         
+		            // Define the path to save the image
+		           // String imagePath = "C:/Users/Acer/Documents/uploadPhotos/"+name+".png";
+		           
+//		            String imagePath = request.getSession().getServletContext().getRealPath("VisitorPhotos/"+ name + ".png");
+//		           
+//		            fos = new FileOutputStream(imagePath);
+//		            // Save the image to the specified path
+//		            fos.write(imageBytes);
+		            
+//		           String savePath = request.getSession().getServletContext().getRealPath("") + File.separator + "VisitorsPhotos";
+//		           File directory = new File(savePath);
+//		            if (!directory.exists()) {
+//		                directory.mkdirs();
+//		            }
+//		            File imageFile = new File(directory, name + ".png");
+//		            
+//		            	fos = new FileOutputStream(imageFile);
+//		                fos.write(imageBytes);
+//		                fos.flush();
+//		            
+//		                System.out.println("Image uploaded and saved successfully at: " + imageFile.getAbsolutePath());
+	       
+		            
+//		            String filename = request.getSession().getServletContext().getRealPath("");
+//					String filenameArray[] = filename.split(":");
+//					String folderPath = filenameArray[0] + ":\\VisitorsPhoto";
+////					String imagePath = folderPath+ name + ".png"; 
+////					fos = new FileOutputStream(imagePath);
+////					fos.write(imageBytes);
+//					boolean flag = false;
+//					File file = new File(folderPath);
+//					if (!file.exists()) {
+//						flag = file.mkdir();
+//					}
+				
+//				visitors.setVisitorPhoto(imagePath+ name + ".png");
+//				visitorsDAO.updateVisitor(visitors);
 
 			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -11126,6 +11262,8 @@ public class AdminController {
 		}
 	}
 
+	
+	
 	@RequestMapping(value = "savevisitortype.htm", method = RequestMethod.POST)
 	public ModelAndView showVisitorType(@RequestParam(value = "visitorTypeString") String visitorTypeString,
 			HttpServletRequest request, HttpServletResponse response, HttpSession session) {
@@ -11174,75 +11312,111 @@ public class AdminController {
 	@RequestMapping(value = "PhotoCapture.htm", method = RequestMethod.GET)
 	public ModelAndView PhotoCaputr(@RequestParam(value = "updateVisitorId") int visitorId, HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) {
-		return new ModelAndView("PhotoCapture");
+		
+        ModelAndView mav = new ModelAndView("PhotoCapture");
+        mav.addObject("visitorId", visitorId);
+		System.out.println("photocapture"+visitorId ); 
+//		modelMap.addAttribute("visitorId", visitorId);
+		return mav;
 
 	}
 
-	@RequestMapping(value = "PhotoCapture.htm", method = RequestMethod.POST)
-	public ModelAndView PhotoCaputrPost(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		System.out.println("In Post function");
+//	@RequestMapping(value = "PhotoCapture.htm", method = RequestMethod.POST)
+//	public ModelAndView PhotoCaputrPost(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+//		System.out.println("In Post function");
+//		try {
+//			StringBuffer buffer = new StringBuffer();
+//			Reader reader = request.getReader();
+//			int current;
+// 
+//			while ((current = reader.read()) >= 0)
+//				buffer.append((char) current);
+//
+//			String data = new String(buffer);
+//			data = data.substring(data.indexOf(",") + 1);
+//
+//			System.out.println("PNG image data on Base64: " + data);
+//
+//			FileOutputStream output = new FileOutputStream(
+//					new File("/C:/repositorio/" + new Random().nextInt(100000) + ".png"));
+//
+//			output.write(new BASE64Decoder().decodeBuffer(data));
+//			output.flush();
+//			output.close();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		// return new ModelAndView(new RedirectView("viewvisitors.htm"));
+//		return new ModelAndView("viewvisitors");
+	
+
+//	}
+	
+	@RequestMapping(value = "updatevphoto.htm", method = RequestMethod.POST)
+	public ModelAndView updatevphoto( @RequestParam("Id") int visitorId,@RequestParam("photo") String photoData,  HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		//@RequestParam("photo") String photoData,
+		
+		Visitors visitors=visitorsDAO.getVisitor(visitorId);
+		String name= visitors.getVisitorName();
+		System.out.println("vname:"+name);
+		
+		
 		try {
-			StringBuffer buffer = new StringBuffer();
-			Reader reader = request.getReader();
-			int current;
-
-			while ((current = reader.read()) >= 0)
-				buffer.append((char) current);
-
-			String data = new String(buffer);
-			data = data.substring(data.indexOf(",") + 1);
-
-			System.out.println("PNG image data on Base64: " + data);
-
-			FileOutputStream output = new FileOutputStream(
-					new File("/C:/repositorio/" + new Random().nextInt(100000) + ".png"));
-
-			output.write(new BASE64Decoder().decodeBuffer(data));
-			output.flush();
-			output.close();
-		} catch (Exception e) {
-			e.printStackTrace();
+			
+			FileOutputStream fos = null;
+		     
+            String base64Image = photoData.split(",")[1];
+            byte[] imageBytes = DatatypeConverter.parseBase64Binary(base64Image);
+           
+           
+           String base64Img = DatatypeConverter.printBase64Binary(imageBytes);
+          
+           visitors.setProfilePhoto(base64Img);
+           visitorsDAO.updateVisitor(visitors);
+           
+		}catch (Exception e) {
+			
 		}
-		// return new ModelAndView(new RedirectView("viewvisitors.htm"));
-		return new ModelAndView("viewvisitors");
+		
+		 return new ModelAndView(new RedirectView("viewvisitors.htm"));
 	}
+	
+	
 
 	@RequestMapping(value = "updatevisitorphoto.htm", method = RequestMethod.GET)
 	public ModelAndView updateVisitorPhoto(@RequestParam(value = "updateVisitorId") int visitorId,
 			HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-
-		ModelMap modelMap = getVisitorsModelMap();
+		
+		
+	
+	
 		Visitors visitors = visitorsDAO.getVisitor(visitorId);
-		modelMap.addAttribute("visitors", visitors);
-
-		String projectPath = request.getSession().getServletContext().getRealPath("");
-		String jarPath = projectPath + "\\PhotoCaptureJar\\";
-
-		String visitorPhotoPath = projectPath + "\\VisitorPhotos";
-		File file = new File(visitorPhotoPath);
-		if (!file.exists()) {
-			file.mkdir();
-		}
-
-		String filepath = file.getAbsolutePath();
-
-		try {
-			Runtime.getRuntime().exec(
-					"java -jar \"" + jarPath + "\\CaptureVisitorPhoto.jar\" " + visitorId + " \"" + filepath + "\"");
-			visitors.setVisitorPhoto("VisitorPhotos/" + visitorId + ".jpg");
-			visitorsDAO.updateVisitor(visitors);
-			modelMap.addAttribute("visitorErrorMessage", "Photo updated successfully");
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			modelMap.addAttribute("visitorErrorMessage", "Error updating photo. Please try again.");
-		}
-		return new ModelAndView("updatevisitor", modelMap);
-		// return new ModelAndView(new
-		// RedirectView("showupdatevisitors.htm?Id="+visitorId));
+		String name=visitors.getVisitorName();
+		System.out.println(name);
+//		
+//		try {
+//			
+//			FileOutputStream fos = null;
+//		     
+//            String base64Image = photoData.split(",")[1];
+//            byte[] imageBytes = DatatypeConverter.parseBase64Binary(base64Image);
+//           
+//           
+//           String base64Img = DatatypeConverter.printBase64Binary(imageBytes);
+//			
+//		
+//            visitors.setProfilePhoto(base64Img);
+//           // visitors.setVisitorPhoto("VisitorPhotos/" + name + ".jpg");
+//            visitorsDAO.updateVisitor(visitors);
+//			modelMap.addAttribute("visitorErrorMessage", "Photo updated successfully");
+//			
+//			
+//		} catch (NumberFormatException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		//return new ModelAndView("viewvisitors", modelMap);
+		 return new ModelAndView(new RedirectView("viewvisitors.htm"));
 	}
 
 	@RequestMapping(value = "deletevisitors.htm", method = RequestMethod.POST)
@@ -11435,6 +11609,29 @@ public class AdminController {
 		return new ModelAndView("userDashboardVisitors", modelMap);
 	}
 
+	
+	@RequestMapping(value = "userDashboardallowed.htm", method = RequestMethod.POST)
+	public ModelAndView userDashboardallowed(@RequestParam(value = "employeeId") int employeeId,
+			HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		ModelMap modelMap = new ModelMap();
+		modelMap.addAttribute("visitorLogsList", visitorLogsDAO.getVisitorLogsApprovedEmployeeList(employeeId));
+		
+		modelMap.addAttribute("visitorLogsListSize", visitorLogsDAO.getVisitorLogsApprovedEmployeeList(employeeId).size());
+		
+		List<Employee> employeeList = employeeDAO.getEmployeeList();
+		modelMap.addAttribute("employeeList", employeeList);
+		List<Visitors> visitorsList = visitorsDAO.getVisitors();
+		modelMap.addAttribute("visitorsList", visitorsList);
+		
+		int allowedvisitorcnt= visitorsDAO.getAllowedMeetings(employeeId);
+		modelMap.addAttribute("allowedcount", allowedvisitorcnt);
+		
+		System.out.println(allowedvisitorcnt +":"+ employeeId); 
+		
+		return new ModelAndView("userAllowedVisitors", modelMap);
+	}
+	
+	
 	@RequestMapping(value = "updateApprovalStatusvisitorlogs.htm", method = RequestMethod.POST)
 	public ModelAndView updateApprovalStatusvisitorlogs(@RequestParam("logId") int logId,
 			@RequestParam("status") String status, HttpServletRequest request, HttpServletResponse response,
@@ -11935,7 +12132,7 @@ public class AdminController {
 
 	@RequestMapping(value = "generatevisitorwithPhotoreport.htm", method = RequestMethod.POST)
 	public void generatevisitorwithPhotoreport(@RequestParam(value = "reportTypeVar") String reportTypeVar,
-			HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+			HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
 
 		int visitorId = 0;
 		int employeeId = 0;
@@ -11943,10 +12140,14 @@ public class AdminController {
 		String path = request.getSession().getServletContext().getRealPath("jasperReports") + "\\";
 		String exportPath = request.getSession().getServletContext().getRealPath("reports") + "\\";
 		ResultSet resultSet = null;
-
+		
+		
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("reportTitle", "Visitors Daily Report");
-		parameters.put("imagePath", request.getSession().getServletContext().getRealPath("jasperReports") + "\\");
+
+		
+		
+		
+		
 		ClassLoader classLoader = getClass().getClassLoader();
 		InputStream inputStream1 = classLoader
 				.getResourceAsStream(request.getSession().getServletContext().getRealPath("\\"));
@@ -11973,6 +12174,24 @@ public class AdminController {
 				resultSet = reportDAO.getVisitorDailyReport(reportTypeVar, visitorId, employeeId, dateFrom, dateTo);
 			}
 		}
+		
+		Visitors visitors = visitorsDAO.getVisitor(visitorId);
+		
+		byte[] photoBytes = fetchPhotoFromDatabase(visitorId);
+		
+		
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(photoBytes);
+            Image profilePhoto = ImageIO.read(inputStream);
+           
+        
+		
+		
+		parameters.put("reportTitle", "Visitors Daily Report");
+		//parameters.put("imagePath", request.getSession().getServletContext().getRealPath("jasperReports") + "\\");
+		 parameters.put("profilePhoto", profilePhoto);
+		
+		
+		
 
 		ServletOutputStream servletOutputStream = null;
 		try {
@@ -11985,7 +12204,7 @@ public class AdminController {
 
 			resultSet.beforeFirst();
 			JRResultSetDataSource resultSetDataSource = new JRResultSetDataSource(resultSet);
-			InputStream inputStream = new FileInputStream(jasperPath);
+//			InputStream inputStream = new FileInputStream(jasperPath);
 			// jasperDesign = JasperManager.loadXmlDesign(inputStream);
 			jasperDesign = JRXmlLoader.load(inputStream);
 			jasperReport = JasperCompileManager.compileReport(jasperDesign);
@@ -12021,6 +12240,48 @@ public class AdminController {
 
 	}
 
+	
+	private static byte[] fetchPhotoFromDatabase(int visitorId) {
+        byte[] photoBytes = null;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            // Load the MySQL JDBC driver
+            Class.forName("com.mysql.jdbc.Driver");
+
+            // Establish the connection to the database
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/distna", "root", "admin");
+
+            // SQL query to fetch the binary photo
+            String sql = "SELECT photo FROM visitors WHERE visitor_id = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, visitorId);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                // Retrieve the photo data as a byte array
+                photoBytes = rs.getBytes("photo");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close the ResultSet, PreparedStatement, and Connection
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+		return photoBytes;
+	}
+	
+	
+	
 	@RequestMapping(value = "showvisitorfrequencyreport.htm", method = RequestMethod.GET)
 	public ModelAndView showVisitorFrequencyReport(HttpServletRequest request, HttpServletResponse response,
 			HttpSession session) {
@@ -12615,5 +12876,30 @@ public class AdminController {
 		return ResponseHandler.generateResponse("get cardid ", HttpStatus.ALREADY_REPORTED);
 
 	}
-
+	
+	@RequestMapping(value="/visitorCount.htm", method= RequestMethod.GET)
+	public ModelAndView showTodayvisitorCount() {
+		
+		ModelAndView mav =new ModelAndView("visitorCount");
+		
+		int visitorCount=visitorsDAO.getTodayvisitorCount();
+		
+		int presentvisitor=visitorsDAO.getpresentVisitorCount();
+		
+		int totalvisitors=visitorsDAO.getTotalVisitorCount();
+		
+		mav.addObject("visitorCount", visitorCount);
+		mav.addObject("presentvisitorCount", presentvisitor);
+		mav.addObject("totalvisitorCount", totalvisitors);
+		
+		
+		return mav;
+		
+	}
+	
+		
+	
+	
+	
+	
 }

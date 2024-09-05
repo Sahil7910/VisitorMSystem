@@ -27,6 +27,7 @@ public class Visitors
 	private int visitCount;
 	private String visitorPhoto;
 	private String visitorFingerPrint;
+	private String profilePhoto;
 	
 	@Id
 	@GeneratedValue
@@ -168,6 +169,14 @@ public class Visitors
 		this.visitorFingerPrint = visitorFingerPrint;
 	}
 	
+	@Column(name="profilePhoto")
+	public String getProfilePhoto() { 
+		return profilePhoto; 
+	}
+    public String setProfilePhoto(String base64Img) { 
+    	 return this.profilePhoto = base64Img; 
+    }
+
 	
 	
 }

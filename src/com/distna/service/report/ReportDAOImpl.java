@@ -2338,17 +2338,6 @@ public class ReportDAOImpl implements ReportDAO {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public ResultSet getShortWorkReport(int employeeId, String dateFrom, String dateTo, String empReportType,
 			String selectedcheckbox, int departmentId) {

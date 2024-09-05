@@ -25,17 +25,17 @@
 </div>
 </li>
 
-<li id="foli110" class="notranslate"><label class="desc" id="title110" for="Field110">Vehicle Brand<span id="req_23" class="req">*</span></label>
+<li id="foli110" class="notranslate"><label class="desc" id="title110" for="Field110">Vehicle Brand</label>
 <div>
 <form:input path="vehicleBrand" id="vehicleBrand" name="vehicleBrand" class="field text medium"/>
-<form:errors path="vehicleBrand" cssClass="error"></form:errors>
+
 </div>
 </li>
 
-<li id="foli110" class="notranslate"><label class="desc" id="title110" for="Field110">Vehicle Model<span id="req_23" class="req">*</span></label>
+<li id="foli110" class="notranslate"><label class="desc" id="title110" for="Field110">Vehicle Model</label>
 <div>
 <form:input path="vehicleModel" id="vehicleModel" name="vehicleModel" class="field text medium"/>
-<form:errors path="vehicleModel" cssClass="error"></form:errors>
+
 </div>
 </li>
 

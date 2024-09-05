@@ -23,7 +23,7 @@
 			<td>Visitor Type</td>
 			<td>Location</td>
 			<!-- <td>Designation</td> -->
-			<td>Phone Number</td>
+			<td>Mobile Number</td>
 			<td>Email id</td>
 			<td>Photo</td>
 		</tr>
@@ -38,10 +38,13 @@
 			<td>${locationList.location}</td>
 			</c:if>
 			</c:forEach>
-			<td>${visitorsListVar.phoneNo}</td>
+			<td>${visitorsListVar.mobileNo}</td>
 			<td>${visitorsListVar.emailId}</td>
-			<td><img src="${visitorsListVar.visitorPhoto}" height="48" width="64" alt="${visitorsListVar.visitorPhoto}"/></td>
-		</tr>
+<%-- 			<td><img src="${visitorsListVar.visitorPhoto}" height="48" width="64" alt="${visitorsListVar.visitorPhoto}"/></td>
+
+ --%>
+ 			<td><img src="data:image/png;base64,${visitorsListVar.profilePhoto}" height="48" width="64" alt="${visitorsListVar.profilePhoto}"/></td>
+ 		</tr>
 		</c:forEach>
 	</table>
 </div></div>

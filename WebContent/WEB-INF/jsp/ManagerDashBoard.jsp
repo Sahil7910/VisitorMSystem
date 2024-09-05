@@ -76,6 +76,11 @@ input[type=text] {
 <body onload="FocusOnInput()" >
 	<form name="myForm" method="POST" action="ManagerDashBoard.htm" onsubmit="return pageRedirct()">
 		</br>
+		<div style="float: right; margin-right: 30px; margin-top: 10px;">
+
+			<a href="loginpage.htm" style="text-decoration: none;"><font
+				color="white" size="4">Logout</font></a>
+		</div>
 		</br> 
 		</br>
 		</br>

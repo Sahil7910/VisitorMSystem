@@ -44,10 +44,7 @@ public class VisitorValidator implements Validator {
 		{
 			errors.rejectValue("mobileNo", "mobileNo.required", "Please Enter a Valid Mobile Number");
 		}
-		if((phoneNo.length()!=10 || checkIfNumber(phoneNo)) && !phoneNo.equals(""))
-		{
-			errors.rejectValue("phoneNo", "phoneNo.required", "Please Enter a Valid Phone Number");
-		}
+		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "emailId", "emailId.required");
 		
 		emailPattern=Pattern.compile(EMAIL_PATTERN);
@@ -58,14 +55,14 @@ public class VisitorValidator implements Validator {
 		{
 			errors.rejectValue("emailId", "emailId.required", "Please Enter a Valid e-mail Id");
 		}
-		if(visitors.getAddress().contains(","))
-		{
-			errors.rejectValue("address", "address.required", "No characters allowed in address");
-		}
-		if(visitors.getRemarks().contains(","))
-		{
-			errors.rejectValue("remarks", "remarks.required", "No characters allowed in remarks");
-		}
+		/*
+		 * if(visitors.getAddress().contains(",")) { errors.rejectValue("address",
+		 * "address.required", "No characters allowed in address"); }
+		 */
+		/*
+		 * if(visitors.getRemarks().contains(",")) { errors.rejectValue("remarks",
+		 * "remarks.required", "No characters allowed in remarks"); }
+		 */
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address", "address1.required");
 	}
 	
